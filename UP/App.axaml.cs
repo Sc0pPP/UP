@@ -27,8 +27,9 @@ public partial class App : Application
         //Service
         builder.Services.AddSingleton<NavigationService>();
         builder.Services.AddSingleton<PageFactory>();
+        builder.Services.AddSingleton<AppState>();
+        builder.Services.AddSingleton<MessageBoxService>();
         //Views
-        builder.Services.AddSingleton<MainWindowViewModel>(); 
         builder.Services.AddSingleton< MainWindow>();
         builder.Services.AddTransient<AuthPage>();
         builder.Services.AddTransient<CurrentBookPage>();
@@ -36,9 +37,11 @@ public partial class App : Application
         builder.Services.AddTransient<CurrentBookPage>();
         builder.Services.AddTransient<RegistrationPage>();
         //ViewModels
+        builder.Services.AddSingleton<MainWindowViewModel>(); 
         builder.Services.AddTransient<AuthPageViewModel>();
         builder.Services.AddTransient<FirstPageViewModel>();
         builder.Services.AddTransient<RegistrationPageViewModel>();
+        builder.Services.AddTransient<CurrentBookPageViewModel>();
         
         _host = builder.Build();
         

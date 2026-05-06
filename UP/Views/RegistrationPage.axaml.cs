@@ -12,4 +12,8 @@ public partial class RegistrationPage : ContentPage
         InitializeComponent();
         DataContext = viewModel;
     }
+    public RegistrationPage()
+    {
+        InitializeComponent();
+    }
 }

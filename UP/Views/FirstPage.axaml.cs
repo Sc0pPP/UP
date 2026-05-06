@@ -12,4 +12,9 @@ public partial class FirstPage : ContentPage
         InitializeComponent();
         DataContext=viewModel;
     }
+    public FirstPage()
+    {
+        InitializeComponent();
+       
+    }
 }

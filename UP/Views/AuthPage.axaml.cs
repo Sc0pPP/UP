@@ -12,4 +12,8 @@ public partial class AuthPage : ContentPage
         InitializeComponent();
         DataContext=viewModel;
     }
+    public AuthPage()
+    {
+        InitializeComponent();
+    }
 }

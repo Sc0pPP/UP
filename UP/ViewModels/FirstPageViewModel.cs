@@ -13,6 +13,7 @@ namespace UP.ViewModels;
 public partial class FirstPageViewModel : ObservableObject
 {
    private readonly NavigationService _navigationService;
+   private readonly  AppState _appState;
     [ObservableProperty]
     private string _text = "";
     [ObservableProperty]
@@ -35,10 +36,11 @@ public partial class FirstPageViewModel : ObservableObject
     [ObservableProperty] 
     private string _selectedGenre;
 
-    public FirstPageViewModel(NavigationService navigationService)
+    public FirstPageViewModel(NavigationService navigationService,AppState appState)
     {
         
         _navigationService = navigationService;
+        _appState=appState;
         Books=Core.db.Books.ToList();
         BooksIS = new ObservableCollection<Book>(Core.db.Books
             .Include(b=>b.BookGenres)
@@ -91,7 +93,7 @@ public partial class FirstPageViewModel : ObservableObject
     [RelayCommand]
     private void CLickBook(Book book)
     {
-        AppState.Instance.CurrentBook=book;
+        _appState.CurrentBook=book;
     }
 }
 

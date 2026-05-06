@@ -11,7 +11,7 @@ namespace UP.ViewModels;
 public partial class AuthPageViewModel:ObservableObject
 {
     private readonly NavigationService _navigationService;
-    
+    private readonly AppState _appState;
     [ObservableProperty]
     private bool _authButtonIsEnabled=false;
     [ObservableProperty]
@@ -32,8 +32,9 @@ public partial class AuthPageViewModel:ObservableObject
     [ObservableProperty] 
     private string _repeatPasswordTextBox;
     
-    public AuthPageViewModel(NavigationService navigationService)
+    public AuthPageViewModel(NavigationService navigationService,AppState appState)
     {
+        _appState = appState;
         _navigationService = navigationService;
         
     }
@@ -41,7 +42,6 @@ public partial class AuthPageViewModel:ObservableObject
     [RelayCommand]
     public void RegistrClick()
     {
-       // RegistrationPageViewModel viewModel = new RegistrationPageViewModel(_navigationService);
         _navigationService.ReplaceToAsync<RegistrationPageViewModel>();
     }
     
@@ -59,8 +59,9 @@ public partial class AuthPageViewModel:ObservableObject
     {
         if (RegistrButtonIsEnabled == false)
         {//Регистрация
-            if (string.IsNullOrWhiteSpace(UserNameTextBox) || string.IsNullOrWhiteSpace(PasswordTextBox) ||
-                string.IsNullOrWhiteSpace(RepeatPasswordTextBox))
+            /*
+             if (string.IsNullOrWhiteSpace(UserNameTextBox) || string.IsNullOrWhiteSpace(PasswordTextBox) ||
+                 string.IsNullOrWhiteSpace(RepeatPasswordTextBox))
             {
                 WpfLikeAvaloniaMessageBox.MessageBox.Show("Не все поля заполнены");
                 return;
@@ -81,6 +82,7 @@ public partial class AuthPageViewModel:ObservableObject
             {
 
             };
+            */
 
         }
 
@@ -88,15 +90,15 @@ public partial class AuthPageViewModel:ObservableObject
         {//Аутентификация
             if (string.IsNullOrWhiteSpace(UserNameTextBox) || string.IsNullOrWhiteSpace(PasswordTextBox) )
             {
-                WpfLikeAvaloniaMessageBox.MessageBox.Show("Не все поля заполнены");
+                MessageBoxService.MessageBoxShow("Не все поля заполнены");
                 return;
             }
 
-            if (Core.db.Users.FirstOrDefault(u => u.Login==UserNameTextBox) == null)
-            {
-                
-            }
-            
+            var user = Core.db.Users.FirstOrDefault(u => u.Login == UserNameTextBox && u.Password == PasswordTextBox);
+            if (user==null)MessageBoxService.MessageBoxShow("Неверный логин или пароль");
+
+            _appState.CurrentUser = user;
+            _navigationService.PushToAsync<CurrentBookPageViewModel>();
         }
     }
     

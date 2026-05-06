@@ -4,12 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UP.Views.RegistrationPage">
+    
     <Grid Background="#FDF8F5">
-        <Border VerticalAlignment="Center" HorizontalAlignment="Center" Width="340"
+        <Border VerticalAlignment="Center" HorizontalAlignment="Center" Width="750"
                 Background="White" CornerRadius="12"
                 BorderThickness="1" BorderBrush="#E0C8BC"
                 Padding="32,36">
-            <StackPanel Spacing="0">
+            <StackPanel Orientation="Horizontal">
+            <StackPanel Spacing="0" Width="300">
                 <TextBlock Text="Shut I Korol" FontSize="14" HorizontalAlignment="Center"
                            Foreground="#C8966E" LetterSpacing="3" Margin="0,0,0,6"/>
                 <Button Content="Вход в аккаунт" FontSize="18" FontWeight="SemiBold"
@@ -27,6 +29,9 @@
 
                 <TextBlock Text="Пароль" Foreground="#7A6A6A" FontSize="13" Margin="0,0,0,4"/>
                 <TextBox PasswordChar="*"  Text="{Binding PasswordTextBox}" Height="38" CornerRadius="6"
+                         BorderBrush="#E0C8BC" Padding="10,0" Margin="0,0,0,14"/>
+                <TextBlock Text="Повторите пароль" Foreground="#7A6A6A" FontSize="13" Margin="0,0,0,4"/>
+                <TextBox PasswordChar="*"  Text="{Binding RepeatPasswordTextBox}" Height="38" CornerRadius="6"
                          BorderBrush="#E0C8BC" Padding="10,0" Margin="0,0,0,24"/>
                 <Button Content="{Binding ButtonText}" Height="42" HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Center"
@@ -35,6 +40,27 @@
                         CornerRadius="8" FontSize="15" FontWeight="SemiBold"
                         />
             </StackPanel>
+                <StackPanel Spacing="0" Width="300" Margin="80,0,0,0">
+                    <TextBlock Text="Имя" Foreground="#7A6A6A" FontSize="13" Margin="0,0,0,4"/>
+                    <TextBox Text="{Binding UserFirstNameTextBox}" Height="38" CornerRadius="6"
+                             BorderBrush="#E0C8BC" Padding="10,0" Margin="0,0,0,14"/>
+
+                    <TextBlock Text="Фамилия" Foreground="#7A6A6A" FontSize="13" Margin="0,0,0,4"/>
+                    <TextBox   Text="{Binding UserLastNameTextBox}" Height="38" CornerRadius="6"
+                             BorderBrush="#E0C8BC" Padding="10,0" Margin="0,0,0,24"/>
+                    <TextBlock Text="Отчество" Foreground="#7A6A6A" FontSize="13" Margin="0,0,0,4"/>
+                    <TextBox Text="{Binding UserMidleNameTextBox}" Height="38" CornerRadius="6"
+                             BorderBrush="#E0C8BC" Padding="10,0" Margin="0,0,0,14"/>
+
+                    <TextBlock Text="Почта" Foreground="#7A6A6A" FontSize="13" Margin="0,0,0,4"/>
+                    <TextBox   Text="{Binding MailTextBox}" Height="38" CornerRadius="6"
+                             BorderBrush="#E0C8BC" Padding="10,0" Margin="0,0,0,24"/>
+                    <TextBlock Text="Телефон" Foreground="#7A6A6A" FontSize="13" Margin="0,0,0,4"/>
+                    <TextBox   Text="{Binding PhoneTextBox}" Height="38" CornerRadius="6"
+                             BorderBrush="#E0C8BC" Padding="10,0" Margin="0,0,0,24"/>
+                    
+                </StackPanel>
+                </StackPanel>
         </Border>
     </Grid>
 </ContentPage>

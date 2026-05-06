@@ -5,8 +5,8 @@ namespace UP.Services;
 
 public partial class AppState:ObservableObject
 {
-    public static AppState Instance { get; } = new();
-    
     [ObservableProperty]
     private Book _currentBook;
+    [ObservableProperty]
+    private User _currentUser;
 }
