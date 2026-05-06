@@ -241,3 +241,5 @@ C:\Users\Scop\RiderProjects\UP\UP\bin\Debug\net9.0\runtimes\win\lib\net6.0\Syste
 C:\Users\Scop\RiderProjects\UP\UP\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\Scop\RiderProjects\UP\UP\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Scop\RiderProjects\UP\UP\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Scop\RiderProjects\UP\UP\obj\Debug\net9.0\UP.sourcelink.json
+C:\Users\Scop\RiderProjects\UP\UP\bin\Debug\net9.0\WpfLikeAvaloniaMessageBox.dll

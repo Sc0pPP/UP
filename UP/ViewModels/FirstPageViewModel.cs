@@ -12,7 +12,7 @@ namespace UP.ViewModels;
 
 public partial class FirstPageViewModel : ObservableObject
 {
-   
+   private readonly NavigationService _navigationService;
     [ObservableProperty]
     private string _text = "";
     [ObservableProperty]
@@ -21,22 +21,70 @@ public partial class FirstPageViewModel : ObservableObject
     private Book _selectedBook;
 
     [ObservableProperty]
-    private string _searchName;
+    private string _searchName="";
 
     [ObservableProperty] 
-    private string _searchAuthor;
+    private string _searchAuthor="";
     
-    
-    public FirstPageViewModel()
+    [ObservableProperty]
+    List<Book> _books=Core.db.Books.ToList();
+
+    [ObservableProperty]
+    private List<string> _genresList=Core.db.Genres.Select(g=>g.Genre1).ToList();
+
+    [ObservableProperty] 
+    private string _selectedGenre;
+
+    public FirstPageViewModel(NavigationService navigationService)
     {
         
-        List<Book> Books=Core.db.Books.ToList();
+        _navigationService = navigationService;
+        Books=Core.db.Books.ToList();
         BooksIS = new ObservableCollection<Book>(Core.db.Books
             .Include(b=>b.BookGenres)
             .ThenInclude(b=>b.Genre)
             .Include(b=>b.AuthorNavigation)
             .ToList());
         
+    }
+
+    private void filtered()
+    {
+        var filteredAll = Books;
+        if (!string.IsNullOrWhiteSpace(_searchName))
+        {
+            filteredAll = filteredAll.Where(b =>
+                b.Name.Contains(SearchName, StringComparison.OrdinalIgnoreCase) 
+            ).ToList();
+        }
+
+        if (!string.IsNullOrWhiteSpace(_searchAuthor))
+        {
+            filteredAll = filteredAll.Where(b =>
+                b.AuthorNavigation.fio.Contains(SearchAuthor, StringComparison.OrdinalIgnoreCase) 
+            ).ToList();
+        }
+
+        if (!string.IsNullOrWhiteSpace(_selectedGenre))
+        {
+            filteredAll= filteredAll.Where(b => b.BookGenres.Count(bg => bg.Genre.Genre1 == SelectedGenre) > 0).ToList();
+        }
+        BooksIS=new ObservableCollection<Book>(filteredAll);
+        
+    }
+    
+    
+    partial void OnSearchNameChanged(string value)
+    {
+        filtered();
+    }
+    partial void OnSearchAuthorChanged(string value)
+    {
+        filtered();
+    }
+    partial void OnSelectedGenreChanged(string value)
+    {
+        filtered();
     }
     
 

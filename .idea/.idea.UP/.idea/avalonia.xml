@@ -4,9 +4,11 @@
     <option name="projectPerEditor">
       <map>
         <entry key="UP/App.axaml" value="UP/UP.csproj" />
+        <entry key="UP/Views/AuthPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/CurrentBookPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/FirstPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/MainWindow.axaml" value="UP/UP.csproj" />
+        <entry key="UP/Views/RegistrationPage.axaml" value="UP/UP.csproj" />
       </map>
     </option>
   </component>

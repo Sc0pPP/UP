@@ -98,6 +98,10 @@
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
               "version": "[9.0.15, )"
+            },
+            "WpfLikeAvaloniaMessageBox": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [

@@ -2721,6 +2721,18 @@
             "related": ".xml"
           }
         }
+      },
+      "WpfLikeAvaloniaMessageBox/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "11.0.0"
+        },
+        "compile": {
+          "lib/net8.0/WpfLikeAvaloniaMessageBox.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/WpfLikeAvaloniaMessageBox.dll": {}
+        }
       }
     }
   },
@@ -7235,6 +7247,21 @@
         "tmds.dbus.protocol.0.90.3.nupkg.sha512",
         "tmds.dbus.protocol.nuspec"
       ]
+    },
+    "WpfLikeAvaloniaMessageBox/1.0.0": {
+      "sha512": "HcZahx6H5jt3uT6qR1AkW90BY2Qk0wxx2gI+AdrCVSUGhfdvEbjWkyUPvC4ZedaK0PS/mrTzceYPcup8GCKRGQ==",
+      "type": "package",
+      "path": "wpflikeavaloniamessagebox/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "lib/net10.0/WpfLikeAvaloniaMessageBox.dll",
+        "lib/net8.0/WpfLikeAvaloniaMessageBox.dll",
+        "wpflikeavaloniamessagebox.1.0.0.nupkg.sha512",
+        "wpflikeavaloniamessagebox.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -7249,7 +7276,8 @@
       "Microsoft.EntityFrameworkCore.Design >= 9.0.15",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.15",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.15",
-      "Microsoft.Extensions.Hosting >= 9.0.15"
+      "Microsoft.Extensions.Hosting >= 9.0.15",
+      "WpfLikeAvaloniaMessageBox >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -7350,6 +7378,10 @@
           "Microsoft.Extensions.Hosting": {
             "target": "Package",
             "version": "[9.0.15, )"
+          },
+          "WpfLikeAvaloniaMessageBox": {
+            "target": "Package",
+            "version": "[1.0.0, )"
           }
         },
         "imports": [

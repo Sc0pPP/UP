@@ -5,9 +5,9 @@ using UP.ViewModels;
 
 namespace UP.Views;
 
-public partial class FirstPage : ContentPage
+public partial class AuthPage : ContentPage
 {
-    public FirstPage(FirstPageViewModel viewModel)
+    public AuthPage(AuthPageViewModel viewModel)
     {
         InitializeComponent();
         DataContext=viewModel;

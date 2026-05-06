@@ -6,12 +6,7 @@
              xmlns:viewModels="clr-namespace:UP.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UP.Views.FirstPage"
-             x:CompileBindings="False"
              >
-    <ContentPage.DataContext>
-        <viewModels:FirstPageViewModel/>
-    </ContentPage.DataContext>
-    
     <Grid RowDefinitions="50,*">
         
         <StackPanel  HorizontalAlignment="Left" Height="100" Orientation="Horizontal"
@@ -32,7 +27,17 @@
                          Text="{Binding SearchName}"
                          />
             </StackPanel>
-        </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,16,0">
+                <TextBlock Text="Фильтр по Жанру" Foreground="#7A6A6A" FontSize="12"
+                           HorizontalAlignment="Center" Margin="0,0,0,4"/>
+                <ComboBox Text="Жанр"
+                          ItemsSource="{Binding GenresList}"
+                          SelectedItem="{Binding SelectedGenre}"
+                          HorizontalAlignment="Center"
+                          Width="120"
+                          />
+            </StackPanel>
+            </StackPanel>
         <Border Grid.Row="1" BorderThickness="1" BorderBrush="#E0C8BC" Background="White"
                 Margin="10" CornerRadius="10">
            <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="prod"

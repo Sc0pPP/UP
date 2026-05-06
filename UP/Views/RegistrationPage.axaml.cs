@@ -5,11 +5,11 @@ using UP.ViewModels;
 
 namespace UP.Views;
 
-public partial class FirstPage : ContentPage
+public partial class RegistrationPage : ContentPage
 {
-    public FirstPage(FirstPageViewModel viewModel)
+    public RegistrationPage(RegistrationPageViewModel viewModel)
     {
         InitializeComponent();
-        DataContext=viewModel;
+        DataContext = viewModel;
     }
 }

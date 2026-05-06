@@ -17,7 +17,8 @@
           "Microsoft.EntityFrameworkCore": "9.0.15",
           "Microsoft.EntityFrameworkCore.Design": "9.0.15",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.15",
-          "Microsoft.Extensions.Hosting": "9.0.15"
+          "Microsoft.Extensions.Hosting": "9.0.15",
+          "WpfLikeAvaloniaMessageBox": "1.0.0"
         },
         "runtime": {
           "UP.dll": {}
@@ -1722,6 +1723,17 @@
             "fileVersion": "0.90.3.0"
           }
         }
+      },
+      "WpfLikeAvaloniaMessageBox/1.0.0": {
+        "dependencies": {
+          "Avalonia": "12.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/WpfLikeAvaloniaMessageBox.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -2451,6 +2463,13 @@
       "sha512": "sha512-T5BqXZb3Lqg+5yKInnW+hPtv/lzW8S8tZbLKFCbzgFF6iy4w5O3MDNzppgQfudR1nqMSpSDjX7w9OmDljV4GyA==",
       "path": "tmds.dbus.protocol/0.90.3",
       "hashPath": "tmds.dbus.protocol.0.90.3.nupkg.sha512"
+    },
+    "WpfLikeAvaloniaMessageBox/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HcZahx6H5jt3uT6qR1AkW90BY2Qk0wxx2gI+AdrCVSUGhfdvEbjWkyUPvC4ZedaK0PS/mrTzceYPcup8GCKRGQ==",
+      "path": "wpflikeavaloniamessagebox/1.0.0",
+      "hashPath": "wpflikeavaloniamessagebox.1.0.0.nupkg.sha512"
     }
   }
 }
