@@ -8,5 +8,5 @@ public partial class AppState:ObservableObject
     [ObservableProperty]
     private Book _currentBook;
     [ObservableProperty]
-    private User _currentUser;
+    private User? _currentUser;
 }

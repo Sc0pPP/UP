@@ -22,7 +22,8 @@ public class PageFactory
         {
             var t when t == typeof(AuthPageViewModel) => _serviceProvider.GetRequiredService<AuthPage>(),
             var t when t == typeof(RegistrationPageViewModel) => _serviceProvider.GetRequiredService<RegistrationPage>(),
-            var t when t == typeof(CurrentBookPageViewModel)=>_serviceProvider.GetRequiredService<CurrentBookPage>()
+            var t when t == typeof(CurrentBookPageViewModel)=>_serviceProvider.GetRequiredService<CurrentBookPage>(),
+            var t when t == typeof(FirstPageViewModel)=>_serviceProvider.GetRequiredService<FirstPage>()
         };
     }
 }

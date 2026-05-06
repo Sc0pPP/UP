@@ -57,35 +57,7 @@ public partial class AuthPageViewModel:ObservableObject
     [RelayCommand]
     public void MainButtonClick()
     {
-        if (RegistrButtonIsEnabled == false)
-        {//Регистрация
-            /*
-             if (string.IsNullOrWhiteSpace(UserNameTextBox) || string.IsNullOrWhiteSpace(PasswordTextBox) ||
-                 string.IsNullOrWhiteSpace(RepeatPasswordTextBox))
-            {
-                WpfLikeAvaloniaMessageBox.MessageBox.Show("Не все поля заполнены");
-                return;
-            }
-            if (Core.db.Users.FirstOrDefault(u => u.Login==UserNameTextBox) != null)
-            {
-                WpfLikeAvaloniaMessageBox.MessageBox.Show("Логин Занят");
-                return;
-            }
-
-            if (PasswordTextBox != RepeatPasswordTextBox)
-            {
-                WpfLikeAvaloniaMessageBox.MessageBox.Show("Пароли не совпадают");
-                return;
-            }
-
-            User newuser = new User()
-            {
-
-            };
-            */
-
-        }
-
+        
         if (AuthButtonIsEnabled == false)
         {//Аутентификация
             if (string.IsNullOrWhiteSpace(UserNameTextBox) || string.IsNullOrWhiteSpace(PasswordTextBox) )
@@ -98,7 +70,7 @@ public partial class AuthPageViewModel:ObservableObject
             if (user==null)MessageBoxService.MessageBoxShow("Неверный логин или пароль");
 
             _appState.CurrentUser = user;
-            _navigationService.PushToAsync<CurrentBookPageViewModel>();
+            _navigationService.ReplaceToAsync<FirstPageViewModel>();
         }
     }
     

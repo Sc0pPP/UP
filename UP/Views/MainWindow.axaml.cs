@@ -13,5 +13,9 @@ public partial class MainWindow : Window
         NavPage.Content=authPage;
         navigationService.Attached(NavPage);
     }
+    public MainWindow(){
+        InitializeComponent();
+    }
+    
     
 }

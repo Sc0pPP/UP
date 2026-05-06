@@ -9,9 +9,77 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="UP">
     <DrawerPage>
+        <DrawerPage.DrawerHeader>
+            <Border Background="#C8966E" Padding="20,24,20,16">
+                <StackPanel Spacing="4" >
+                    <TextBlock Text="Shut I Korol"
+                               Foreground="White"
+                               FontSize="20"
+                               FontWeight="Bold"
+                               />
+                    <TextBlock Text="{Binding GreetingText}"
+                               Foreground="#FDF8F5"
+                               FontSize="12"
+                               />
+                </StackPanel>
+            </Border>
+        </DrawerPage.DrawerHeader>
         <DrawerPage.Drawer>
-            
-            <Button Content="Главная страница"/>
+            <StackPanel Spacing="8" Margin="12" Width="200" >
+
+                <Button Background="Transparent" BorderThickness="0"
+                        Padding="8" CornerRadius="8"
+                        ToolTip.Tip="Каталог книг"
+                        Command="{Binding GoToCatalogCommand}">
+                    <Image Source="/Assets/avalonia-logo.ico" Width="32" Height="32"
+                           VerticalAlignment="Center"/>
+                </Button>
+
+                <Button Background="Transparent" BorderThickness="0"
+                        Padding="8" CornerRadius="8"
+                        ToolTip.Tip="Списки книг"
+                        Command="{Binding GoToListsCommand}">
+                    <Image Source="/Assets/avalonia-logo.ico" Width="32" Height="32"
+                           VerticalAlignment="Center"/>
+                </Button>
+
+                <Button Background="Transparent" BorderThickness="0"
+                        Padding="8" CornerRadius="8"
+                        ToolTip.Tip="Профиль"
+                        Command="{Binding GoToProfileCommand}">
+                        
+                    <Image Source="/Assets/avalonia-logo.ico" Width="32" Height="32"
+                           VerticalAlignment="Center"/>
+                </Button>
+
+                <Button Background="Transparent" BorderThickness="0"
+                        Padding="8" CornerRadius="8"
+                        ToolTip.Tip="Страница автора"
+                        IsVisible="{Binding IsAuthor}"
+                        Command="{Binding GoToAuthorPageCommand}">
+                    <Image Source="/Assets/avalonia-logo.ico" ToolTip.Tip="Страница автора" Width="32" Height="32"
+                           VerticalAlignment="Center"/>
+                </Button>
+
+                <Button Background="Transparent" BorderThickness="0"
+                        Padding="8" CornerRadius="8"
+                        ToolTip.Tip="Администрирование"
+                        IsVisible="{Binding IsAdmin}"
+                        Command="{Binding GoToAdminCommand}">
+                    <Image Source="/Assets/avalonia-logo.ico" Width="32" Height="32"
+                           VerticalAlignment="Center"/>
+                </Button>
+
+                <Button Background="Transparent" BorderThickness="0"
+                        Padding="8" CornerRadius="8"
+                        ToolTip.Tip="Аккаунт заморожен"
+                        IsVisible="{Binding IsFrozen}"
+                        Command="{Binding GoToFreezeWarningCommand}">
+                    <Image Source="/Assets/avalonia-logo.ico" Width="32" Height="32"
+                           VerticalAlignment="Center"/>
+                </Button>
+
+            </StackPanel>
         </DrawerPage.Drawer>
         <DrawerPage.Content>
             <NavigationPage x:Name="NavPage">
