@@ -26,6 +26,7 @@ public partial class FirstPageViewModel : ObservableObject
     [ObservableProperty] 
     private string _searchAuthor;
     
+    
     public FirstPageViewModel()
     {
         
