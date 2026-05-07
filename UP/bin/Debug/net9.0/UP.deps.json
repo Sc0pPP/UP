@@ -11,6 +11,7 @@
           "Avalonia": "12.0.0",
           "Avalonia.Desktop": "12.0.0",
           "Avalonia.Fonts.Inter": "12.0.0",
+          "Avalonia.Svg.Skia": "11.3.0",
           "Avalonia.Themes.Fluent": "12.0.0",
           "AvaloniaUI.DiagnosticsSupport": "2.2.0",
           "CommunityToolkit.Mvvm": "8.4.1",
@@ -199,6 +200,20 @@
           }
         }
       },
+      "Avalonia.Svg.Skia/11.3.0": {
+        "dependencies": {
+          "Avalonia": "12.0.0",
+          "Avalonia.Skia": "12.0.0",
+          "SkiaSharp": "3.119.3-preview.1.1",
+          "Svg.Skia": "3.0.2"
+        },
+        "runtime": {
+          "lib/net8.0/Avalonia.Svg.Skia.dll": {
+            "assemblyVersion": "11.3.0.0",
+            "fileVersion": "11.3.0.0"
+          }
+        }
+      },
       "Avalonia.Themes.Fluent/12.0.0": {
         "dependencies": {
           "Avalonia": "12.0.0"
@@ -286,6 +301,14 @@
           "lib/net8.0/CommunityToolkit.Mvvm.dll": {
             "assemblyVersion": "8.4.0.0",
             "fileVersion": "8.4.1.1"
+          }
+        }
+      },
+      "ExCSS/4.3.0": {
+        "runtime": {
+          "lib/net8.0/ExCSS.dll": {
+            "assemblyVersion": "4.3.0.0",
+            "fileVersion": "4.3.0.0"
           }
         }
       },
@@ -1359,6 +1382,14 @@
           }
         }
       },
+      "ShimSkiaSharp/3.0.2": {
+        "runtime": {
+          "lib/net8.0/ShimSkiaSharp.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
+          }
+        }
+      },
       "SkiaSharp/3.119.3-preview.1.1": {
         "dependencies": {
           "SkiaSharp.NativeAssets.Win32": "3.119.3-preview.1.1",
@@ -1368,6 +1399,18 @@
           "lib/net8.0/SkiaSharp.dll": {
             "assemblyVersion": "3.119.0.0",
             "fileVersion": "3.119.3.0"
+          }
+        }
+      },
+      "SkiaSharp.HarfBuzz/3.116.1": {
+        "dependencies": {
+          "HarfBuzzSharp": "8.3.1.3",
+          "SkiaSharp": "3.119.3-preview.1.1"
+        },
+        "runtime": {
+          "lib/net8.0/SkiaSharp.HarfBuzz.dll": {
+            "assemblyVersion": "3.116.0.0",
+            "fileVersion": "3.116.1.0"
           }
         }
       },
@@ -1470,6 +1513,43 @@
             "rid": "win-x86",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Svg.Custom/3.0.2": {
+        "dependencies": {
+          "ExCSS": "4.3.0"
+        },
+        "runtime": {
+          "lib/net8.0/Svg.Custom.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
+          }
+        }
+      },
+      "Svg.Model/3.0.2": {
+        "dependencies": {
+          "ShimSkiaSharp": "3.0.2",
+          "Svg.Custom": "3.0.2"
+        },
+        "runtime": {
+          "lib/net8.0/Svg.Model.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
+          }
+        }
+      },
+      "Svg.Skia/3.0.2": {
+        "dependencies": {
+          "SkiaSharp": "3.119.3-preview.1.1",
+          "SkiaSharp.HarfBuzz": "3.116.1",
+          "Svg.Custom": "3.0.2",
+          "Svg.Model": "3.0.2"
+        },
+        "runtime": {
+          "lib/net8.0/Svg.Skia.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
           }
         }
       },
@@ -1813,6 +1893,13 @@
       "path": "avalonia.skia/12.0.0",
       "hashPath": "avalonia.skia.12.0.0.nupkg.sha512"
     },
+    "Avalonia.Svg.Skia/11.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ksf4MXhI6u3OwcBcd2qw35OQTmkVmd1RVBSn41xAjmfsVEA5/EkQh5OF8qjasgIkvSgf2r+Rc/tpOmfVEagbhw==",
+      "path": "avalonia.svg.skia/11.3.0",
+      "hashPath": "avalonia.svg.skia.11.3.0.nupkg.sha512"
+    },
     "Avalonia.Themes.Fluent/12.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1861,6 +1948,13 @@
       "sha512": "sha512-BTRteP8SvFyd/4KAreIFJBcxD2O9trLxLDD/p8YkSDDrfFOzy2U8cHyz6r+5Eh4kDhJdzAVglei6a+Bh4jCpUA==",
       "path": "communitytoolkit.mvvm/8.4.1",
       "hashPath": "communitytoolkit.mvvm.8.4.1.nupkg.sha512"
+    },
+    "ExCSS/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LyVZ925Cl6Z4TJrbogt3+DkvanYWZcJs0tzKg8lWHAY9PgniVMluNy+l5vXDMmvt5gBgekULasEnUqVAavPuZw==",
+      "path": "excss/4.3.0",
+      "hashPath": "excss.4.3.0.nupkg.sha512"
     },
     "HarfBuzzSharp/8.3.1.3": {
       "type": "package",
@@ -2296,12 +2390,26 @@
       "path": "mono.texttemplating/3.0.0",
       "hashPath": "mono.texttemplating.3.0.0.nupkg.sha512"
     },
+    "ShimSkiaSharp/3.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VRLaZRQ7llIgQXf6H6Bjpt47RG/9UQvWZdJz97ReFlb4PHwjoId6HkoO84ETyqS/8J2GNT2fDnzmdVBMr5YXOg==",
+      "path": "shimskiasharp/3.0.2",
+      "hashPath": "shimskiasharp.3.0.2.nupkg.sha512"
+    },
     "SkiaSharp/3.119.3-preview.1.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-+3ndwD845G4jfuyhtg5rrjryh2mEOr2QfAPFtncvAsRLzGX0ferSJ0223av6Sbw9zsEL6Wk0sk/DrXtEpJoo5A==",
       "path": "skiasharp/3.119.3-preview.1.1",
       "hashPath": "skiasharp.3.119.3-preview.1.1.nupkg.sha512"
+    },
+    "SkiaSharp.HarfBuzz/3.116.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ibDG1+quN86vBd9ztjDAC9wnvS1nRZ6ydTUOSod4NsRHWdLLGzWYn1IOF4Cg9iJh5cQHdpzhUZBQE0JMKznrow==",
+      "path": "skiasharp.harfbuzz/3.116.1",
+      "hashPath": "skiasharp.harfbuzz.3.116.1.nupkg.sha512"
     },
     "SkiaSharp.NativeAssets.Linux/3.119.3-preview.1.1": {
       "type": "package",
@@ -2323,6 +2431,27 @@
       "sha512": "sha512-PkMb1pGPBSW3ZL0IVKP9DZs+w065HVs4jGQELsbkmKzKSL5P8KHLkrrmnv2XpFpXtx2njOllB8243N1dBMK+CQ==",
       "path": "skiasharp.nativeassets.win32/3.119.3-preview.1.1",
       "hashPath": "skiasharp.nativeassets.win32.3.119.3-preview.1.1.nupkg.sha512"
+    },
+    "Svg.Custom/3.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-I5QtMsOPdZpR2YsKc3WcLsW2S1YptyGr0MqyXTD4gotZIQtGinY8ZICMrNRTtJBRWeVn352Xdf7lYUtQQABodg==",
+      "path": "svg.custom/3.0.2",
+      "hashPath": "svg.custom.3.0.2.nupkg.sha512"
+    },
+    "Svg.Model/3.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-a/EfBT3WGPgEnKybHl2B6pqKkxL64I25k+ozY+zF7YvQp/0v0vqR/KVGacpcv8hFGMINXIGDccxR8boqXJj5Zw==",
+      "path": "svg.model/3.0.2",
+      "hashPath": "svg.model.3.0.2.nupkg.sha512"
+    },
+    "Svg.Skia/3.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6Bmo5q3sg5OvQ1QPuRT9+I3/2SI76qFbptmYqdC2G/cnhUP7Wucg9s6RtcC9nGTNsEyZ+GK7cz0zPw0HepB6UA==",
+      "path": "svg.skia/3.0.2",
+      "hashPath": "svg.skia.3.0.2.nupkg.sha512"
     },
     "System.ClientModel/1.0.0": {
       "type": "package",

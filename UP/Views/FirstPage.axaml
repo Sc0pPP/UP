@@ -7,6 +7,11 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UP.Views.FirstPage"
              >
+    <NavigationPage.TopCommandBar>
+        <CommandBar Background="#FDF8F5">
+                        
+        </CommandBar>
+    </NavigationPage.TopCommandBar>
     <Grid RowDefinitions="50,*">
         
         <StackPanel  HorizontalAlignment="Left" Height="100" Orientation="Horizontal"

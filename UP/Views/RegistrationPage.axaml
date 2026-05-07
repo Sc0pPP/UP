@@ -4,7 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UP.Views.RegistrationPage">
-    
+    <NavigationPage.TopCommandBar>
+        <CommandBar Background="#FDF8F5">
+                        
+        </CommandBar>
+    </NavigationPage.TopCommandBar>
     <Grid Background="#FDF8F5">
         <Border VerticalAlignment="Center" HorizontalAlignment="Center" Width="750"
                 Background="White" CornerRadius="12"

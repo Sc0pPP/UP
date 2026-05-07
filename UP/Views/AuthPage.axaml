@@ -5,7 +5,11 @@
              xmlns:viewModels="clr-namespace:UP.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UP.Views.AuthPage">
-   
+    <NavigationPage.TopCommandBar>
+        <CommandBar Background="#FDF8F5">
+                        
+        </CommandBar>
+    </NavigationPage.TopCommandBar>
     <Grid Background="#FDF8F5">
         <Border VerticalAlignment="Center" HorizontalAlignment="Center" Width="340"
                 Background="White" CornerRadius="12"

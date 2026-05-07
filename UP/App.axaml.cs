@@ -36,12 +36,20 @@ public partial class App : Application
         builder.Services.AddTransient<FirstPage>();
         builder.Services.AddTransient<CurrentBookPage>();
         builder.Services.AddTransient<RegistrationPage>();
+        builder.Services.AddTransient<ProfilePage>();
+        builder.Services.AddTransient<ListsPage>();
+        builder.Services.AddTransient<AdminPage>();
+        builder.Services.AddTransient<AuthorPage>();
         //ViewModels
         builder.Services.AddSingleton<MainWindowViewModel>(); 
         builder.Services.AddTransient<AuthPageViewModel>();
         builder.Services.AddTransient<FirstPageViewModel>();
         builder.Services.AddTransient<RegistrationPageViewModel>();
         builder.Services.AddTransient<CurrentBookPageViewModel>();
+        builder.Services.AddTransient<ProfilePageViewModel>();
+        builder.Services.AddTransient<ListsPageViewModel>();
+        builder.Services.AddTransient<AdminPageViewModel>();
+        builder.Services.AddTransient<AuthorPageViewModel>();
         
         _host = builder.Build();
         

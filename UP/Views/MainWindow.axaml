@@ -31,7 +31,7 @@
                         Padding="8" CornerRadius="8"
                         ToolTip.Tip="Каталог книг"
                         Command="{Binding GoToCatalogCommand}">
-                    <Image Source="/Assets/avalonia-logo.ico" Width="32" Height="32"
+                    <Image Source="/Assets/01_catalog.png" Width="32" Height="32"
                            VerticalAlignment="Center"/>
                 </Button>
 
@@ -39,7 +39,7 @@
                         Padding="8" CornerRadius="8"
                         ToolTip.Tip="Списки книг"
                         Command="{Binding GoToListsCommand}">
-                    <Image Source="/Assets/avalonia-logo.ico" Width="32" Height="32"
+                    <Image Source="/Assets/02_lists.png" Width="32" Height="32"
                            VerticalAlignment="Center"/>
                 </Button>
 
@@ -48,7 +48,7 @@
                         ToolTip.Tip="Профиль"
                         Command="{Binding GoToProfileCommand}">
                         
-                    <Image Source="/Assets/avalonia-logo.ico" Width="32" Height="32"
+                    <Image Source="/Assets/06_profile.png" Width="32" Height="32"
                            VerticalAlignment="Center"/>
                 </Button>
 
@@ -57,7 +57,7 @@
                         ToolTip.Tip="Страница автора"
                         IsVisible="{Binding IsAuthor}"
                         Command="{Binding GoToAuthorPageCommand}">
-                    <Image Source="/Assets/avalonia-logo.ico" ToolTip.Tip="Страница автора" Width="32" Height="32"
+                    <Image Source="/Assets/04_author.png" ToolTip.Tip="Страница автора" Width="32" Height="32"
                            VerticalAlignment="Center"/>
                 </Button>
 
@@ -66,7 +66,7 @@
                         ToolTip.Tip="Администрирование"
                         IsVisible="{Binding IsAdmin}"
                         Command="{Binding GoToAdminCommand}">
-                    <Image Source="/Assets/avalonia-logo.ico" Width="32" Height="32"
+                    <Image Source="/Assets/03_admin.png" Width="32" Height="32"
                            VerticalAlignment="Center"/>
                 </Button>
 
@@ -75,15 +75,19 @@
                         ToolTip.Tip="Аккаунт заморожен"
                         IsVisible="{Binding IsFrozen}"
                         Command="{Binding GoToFreezeWarningCommand}">
-                    <Image Source="/Assets/avalonia-logo.ico" Width="32" Height="32"
+                    <Image Source="/Assets/05_frozen.png" Width="32" Height="32"
                            VerticalAlignment="Center"/>
                 </Button>
 
             </StackPanel>
         </DrawerPage.Drawer>
         <DrawerPage.Content>
-            <NavigationPage x:Name="NavPage">
-                
+            <NavigationPage x:Name="NavPage" >
+                <NavigationPage.TopCommandBar>
+                    <CommandBar Background="#FDF8F5">
+                        
+                    </CommandBar>
+                </NavigationPage.TopCommandBar>
             </NavigationPage>
         </DrawerPage.Content>
             
