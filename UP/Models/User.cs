@@ -39,12 +39,10 @@ public partial class User
     public virtual ICollection<RoleBid> RoleBids { get; set; } = new List<RoleBid>();
 
     public virtual Role RoleNavigation { get; set; } = null!;
+
     [NotMapped]
     public string fio
     {
-        get
-        {
-            return LastName+" "+FirstName+" "+MidleName;
-        }
+        get { return FirstName + " " + LastName + " " + MidleName; }
     }
 }

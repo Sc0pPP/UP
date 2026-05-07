@@ -85,13 +85,13 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     public void GoToAuthorPage()
     {
-        
+        _navigationService.ReplaceToAsync<AuthorPageViewModel>();
     }
 
     [RelayCommand]
     public void GoToAdmin()
     {
-        
+        _navigationService.ReplaceToAsync<AdminPageViewModel>();
     }
 
     [RelayCommand]

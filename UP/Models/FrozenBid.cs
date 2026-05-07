@@ -13,7 +13,11 @@ public partial class FrozenBid
 
     public int? BookId { get; set; }
 
+    public int? ReviewId { get; set; }
+
     public virtual Book? Book { get; set; }
+
+    public virtual Review? Review { get; set; }
 
     public virtual User? User { get; set; }
 }

@@ -46,6 +46,7 @@ public partial class FirstPageViewModel : ObservableObject
             .Include(b=>b.BookGenres)
             .ThenInclude(b=>b.Genre)
             .Include(b=>b.AuthorNavigation)
+            .Where(u=>u.IsFrozen==false)
             .ToList());
         
     }
@@ -94,6 +95,7 @@ public partial class FirstPageViewModel : ObservableObject
     private void CLickBook(Book book)
     {
         _appState.CurrentBook=book;
+        _navigationService.ReplaceToAsync<CurrentBookPageViewModel>();
     }
 }
 

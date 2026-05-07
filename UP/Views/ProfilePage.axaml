@@ -4,5 +4,44 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UP.Views.ProfilePage">
-   ProfilePAge
+    <Grid Background="#FDF8F5">
+      
+
+        <Border Grid.Column="0" HorizontalAlignment="Stretch" BorderThickness="1"
+                BorderBrush="#E0C8BC" Background="White" Margin="20" CornerRadius="10">
+            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical" Spacing="4" Margin="30">
+                                    <TextBlock Text="{Binding UserLogin}" Foreground="#7A6A6A" FontSize="18" Margin="0,0,0,4"/>
+                                    <TextBlock Text="{Binding Mail}" Foreground="#7A6A6A" FontSize="18" Margin="0,0,0,4"/>
+                                    <TextBlock Text="{Binding Phone}" Foreground="#7A6A6A" FontSize="18" Margin="0,0,0,4"/>
+                                </StackPanel>
+                <Grid>
+                    <ListBox ItemsSource="{Binding Review}"
+                             Background="Transparent" BorderThickness="0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Spacing="2" Margin="0,2,0,2">
+                                    <TextBlock Text="{Binding Book.Name}"
+                                               Foreground="#5A4A4A" FontSize="13"/>
+                                    <TextBlock Text="{Binding ReviewText}"
+                                               Foreground="#5A4A4A" FontSize="13"/>
+                                    <TextBlock Text="{Binding Rating}"
+                                               Foreground="#5A4A4A" FontSize="13"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox> 
+                </Grid>
+                <StackPanel>
+                    <Button Content="Подать заявку На роль автора" Height="42" HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            Command="{Binding }"
+                            Background="#C8966E" Foreground="White"
+                            CornerRadius="8" FontSize="15" FontWeight="SemiBold"
+                            Margin="20"
+                    />
+                </StackPanel>
+                </StackPanel>
+                            </Border>
+    </Grid>
 </ContentPage>

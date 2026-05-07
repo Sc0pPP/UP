@@ -15,7 +15,11 @@ public partial class Review
 
     public int Rating { get; set; }
 
+    public bool? IsFrozen { get; set; }
+
     public virtual Book Book { get; set; } = null!;
+
+    public virtual ICollection<FrozenBid> FrozenBids { get; set; } = new List<FrozenBid>();
 
     public virtual ICollection<Report> Reports { get; set; } = new List<Report>();
 

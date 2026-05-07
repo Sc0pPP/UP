@@ -83,6 +83,10 @@ public partial class MyDbContext : DbContext
                 .HasForeignKey(d => d.BookId)
                 .HasConstraintName("FK_FrozenBid_Book");
 
+            entity.HasOne(d => d.Review).WithMany(p => p.FrozenBids)
+                .HasForeignKey(d => d.ReviewId)
+                .HasConstraintName("FK_FrozenBid_Review");
+
             entity.HasOne(d => d.User).WithMany(p => p.FrozenBids)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK_FrozenBid_User");

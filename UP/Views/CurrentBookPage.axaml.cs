@@ -12,5 +12,10 @@ public partial class CurrentBookPage : ContentPage
         InitializeComponent();
         DataContext=viewModel;
     }
+
+    public CurrentBookPage()
+    {
+        InitializeComponent();  
+    }
     
 }

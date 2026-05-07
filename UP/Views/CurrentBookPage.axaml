@@ -3,11 +3,83 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="UP.Views.CurrentBookPage">
+             x:Class="UP.Views.CurrentBookPage"
+             Name="Page">
    <Grid>
-       <StackPanel>
-       <TextBlock Text="СТраница пользователся тип"/>
-       <TextBlock Text="{Binding Username}"/>
-       </StackPanel>
-   </Grid>
+         <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+           
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" BorderThickness="1" BorderBrush="#E0C8BC" Background="White"
+                Margin="10,10,10,5" CornerRadius="10" >
+            <StackPanel Orientation="Horizontal"  >
+            <StackPanel Width="300" HorizontalAlignment="Left" >
+            <TextBlock Text="{Binding Name}" FontSize="14" HorizontalAlignment="Center"
+                       Foreground="#C8966E" LetterSpacing="3" Margin="0,0,0,6"/>
+            <TextBlock Text="{Binding Author}" FontSize="14" HorizontalAlignment="Center"
+                       Foreground="#C8966E" LetterSpacing="3" Margin="0,0,0,6"/>
+            <ListBox ItemsSource="{Binding BookGenres}"
+                     Background="Transparent" BorderThickness="0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Spacing="2" Margin="0,2,0,2">
+                            <TextBlock Text="{Binding Genre.Genre1}"
+                                       Foreground="#5A4A4A" FontSize="13"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBlock Text="{Binding Description}" FontSize="13" TextWrapping="Wrap" HorizontalAlignment="Center"
+                       Foreground="#C8966E"  Margin="0,0,0,6"/>
+            
+            
+            </StackPanel>
+                
+            <Grid>
+                <ListBox ItemsSource="{Binding Review}"
+                         Background="Transparent" BorderThickness="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Spacing="2" Margin="0,2,0,2">
+                                <TextBlock Text="{Binding ReviewText}"
+                                           Foreground="#5A4A4A" FontSize="13"/>
+                                <TextBlock Text="{Binding Rating}"
+                                           Foreground="#5A4A4A" FontSize="13"/>
+                                <Button Content="Заблокировать" 
+                                        IsVisible="{Binding ElementName=Page, Path=DataContext.VisibleButton}"
+                                        Background="#C8966E" Foreground="White"
+                                        CornerRadius="6" Padding="10,5" FontSize="13" Margin="0,10,0,0"
+                                        Command="{Binding DataContext.ClickReviewCommand,
+                                       RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                        CommandParameter="{Binding}"
+                                />
+                                
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox> 
+            </Grid>
+               
+                <StackPanel>
+                    <Button Content="Заблокировать Книгу"
+                            IsVisible="{Binding VisibleButton}"
+                            Command="{Binding FrozeBookClickCommand}"/>
+                </StackPanel>
+                </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1" Background="White" BorderBrush="#E0C8BC" BorderThickness="1"
+                Margin="10,5,10,5" CornerRadius="10" Padding="16">
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+                <TextBlock Text="{Binding LongText}"
+                           TextWrapping="Wrap" />
+            </ScrollViewer>
+        </Border>
+
+       
+    </Grid>
+   
 </ContentPage>
