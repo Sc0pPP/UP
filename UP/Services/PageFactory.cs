@@ -28,7 +28,8 @@ public class PageFactory
             var t when t == typeof(ListsPageViewModel)=>_serviceProvider.GetRequiredService<ListsPage>(),
             var t when t == typeof(AdminPageViewModel)=>_serviceProvider.GetRequiredService<AdminPage>(),
             var t when t == typeof(FreezePageViewModel)=> _serviceProvider.GetRequiredService<FreezePage>(),
-            var t when t == typeof(AuthorPageViewModel)=>_serviceProvider.GetRequiredService<AuthorPage>()
+            var t when t == typeof(AuthorPageViewModel)=>_serviceProvider.GetRequiredService<AuthorPage>(),
+            var t when t == typeof(BidPageViewModel)=>_serviceProvider.GetRequiredService<BidPage>()
         };
     }
 }

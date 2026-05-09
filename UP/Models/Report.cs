@@ -17,6 +17,8 @@ public partial class Report
 
     public bool IsChecked { get; set; }
 
+    public int? ReportedUserId { get; set; }
+
     public virtual Book? Book { get; set; }
 
     public virtual Review? Review { get; set; }

@@ -201,6 +201,7 @@ public partial class MyDbContext : DbContext
 
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.FirstName).HasMaxLength(50);
+            entity.Property(e => e.FrozenReasons).HasMaxLength(255);
             entity.Property(e => e.LastName).HasMaxLength(50);
             entity.Property(e => e.Login).HasMaxLength(50);
             entity.Property(e => e.MidleName).HasMaxLength(50);

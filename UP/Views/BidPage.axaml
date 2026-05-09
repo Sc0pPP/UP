@@ -1,0 +1,68 @@
+<ContentPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="UP.Views.BidPage">
+<Grid Background="#FDF8F5">
+    <Border HorizontalAlignment="Stretch"
+            BorderThickness="1" BorderBrush="#E0C8BC"
+            Background="White" Margin="20" CornerRadius="12">
+        <StackPanel Margin="32" Spacing="16" VerticalAlignment="Top" MaxWidth="500">
+
+            <TextBlock Text="Подать заявку" FontSize="18" FontWeight="SemiBold"
+                       Foreground="#3D2C2C"/>
+
+            <Border Height="1" Background="#F0E4DC"/>
+
+            
+            <StackPanel Spacing="6">
+                <TextBlock Text="Тип заявки" FontSize="12" Foreground="#B0A0A0"/>
+                <ComboBox ItemsSource="{Binding ReportTypes}"
+                          SelectedItem="{Binding SelectedReportType}"
+                          HorizontalAlignment="Stretch"
+                          Background="#FDF8F5" BorderBrush="#E0C8BC"/>
+            </StackPanel>
+
+
+            <StackPanel Spacing="6">
+                <TextBlock Text="Объект заявки" FontSize="12" Foreground="#B0A0A0"/>
+                <Border Background="#FDF8F5" BorderBrush="#E0C8BC"
+                        BorderThickness="1" CornerRadius="8" Padding="12,8">
+                    <TextBox Text="{Binding TargetDescription}"
+                               Foreground="#5A4A4A" FontSize="13"/>
+                </Border>
+            </StackPanel>
+
+
+            <StackPanel Spacing="6">
+                <TextBlock Text="Причина" FontSize="12" Foreground="#B0A0A0"/>
+                <TextBox Text="{Binding Cause}"
+                         Watermark="Опишите причину жалобы..."
+                         AcceptsReturn="True" Height="120"
+                         TextWrapping="Wrap"
+                         Background="#FDF8F5" BorderBrush="#E0C8BC"
+                         CornerRadius="8" Padding="12,8"
+                         VerticalContentAlignment="Top"/>
+            </StackPanel>
+
+            <Border Height="1" Background="#F0E4DC"/>
+
+
+            <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Right">
+                <Button Content="Отмена"
+                        Height="38" Width="100"
+                        Command="{Binding CancelCommand}"
+                        Background="#F0E4DC" Foreground="#7A6A6A"
+                        CornerRadius="8" FontSize="13"/>
+                <Button Content="Отправить"
+                        Height="38" Width="120"
+                        Command="{Binding SubmitCommand}"
+                        Background="#C8966E" Foreground="White"
+                        CornerRadius="8" FontSize="13" FontWeight="SemiBold"/>
+            </StackPanel>
+
+        </StackPanel>
+    </Border>
+</Grid>
+</ContentPage>

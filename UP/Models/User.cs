@@ -26,6 +26,8 @@ public partial class User
 
     public string Email { get; set; } = null!;
 
+    public string? FrozenReasons { get; set; }
+
     public virtual ICollection<Book> Books { get; set; } = new List<Book>();
 
     public virtual ICollection<FrozenBid> FrozenBids { get; set; } = new List<FrozenBid>();
@@ -39,10 +41,8 @@ public partial class User
     public virtual ICollection<RoleBid> RoleBids { get; set; } = new List<RoleBid>();
 
     public virtual Role RoleNavigation { get; set; } = null!;
-
+    
     [NotMapped]
-    public string fio
-    {
-        get { return FirstName + " " + LastName + " " + MidleName; }
-    }
+    public string fio{  get { 
+        return FirstName + " " + LastName + " " + MidleName; }}
 }

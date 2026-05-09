@@ -15,6 +15,8 @@ public partial class FrozenBid
 
     public int? ReviewId { get; set; }
 
+    public int? ReportedUserId { get; set; }
+
     public virtual Book? Book { get; set; }
 
     public virtual Review? Review { get; set; }

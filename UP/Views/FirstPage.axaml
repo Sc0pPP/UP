@@ -73,6 +73,7 @@
                                        </DataTemplate>
                                    </ListBox.ItemTemplate>
                                </ListBox>
+                               <StackPanel>
                                <Button Content="Подробнее" 
                                        Background="#C8966E" Foreground="White"
                                        CornerRadius="6" Padding="10,5" FontSize="13" Margin="0,10,0,0"
@@ -80,6 +81,15 @@
                                        RelativeSource={RelativeSource AncestorType=ListBox}}"
                                        CommandParameter="{Binding}"
                                        />
+                               <Button Content="Добавить в Планы" 
+                                       Background="#C8966E" Foreground="White"
+                                       CornerRadius="6" Padding="10,5" FontSize="13" Margin="0,10,0,0"
+                                       Command="{Binding DataContext.AddCLickBookCommand,
+                                       RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                       CommandParameter="{Binding}"
+                               />
+                               
+                               </StackPanel>
                            </StackPanel>
                        </Border>
                    </DataTemplate>

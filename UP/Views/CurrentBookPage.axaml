@@ -39,33 +39,59 @@
                 
             <Grid>
                 <ListBox ItemsSource="{Binding Review}"
-                         Background="Transparent" BorderThickness="0">
+                         Background="Transparent" BorderThickness="0"
+                         Width="200">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Spacing="2" Margin="0,2,0,2">
-                                <TextBlock Text="{Binding ReviewText}"
-                                           Foreground="#5A4A4A" FontSize="13"/>
-                                <TextBlock Text="{Binding Rating}"
-                                           Foreground="#5A4A4A" FontSize="13"/>
-                                <Button Content="Заблокировать" 
-                                        IsVisible="{Binding ElementName=Page, Path=DataContext.VisibleButton}"
-                                        Background="#C8966E" Foreground="White"
-                                        CornerRadius="6" Padding="10,5" FontSize="13" Margin="0,10,0,0"
-                                        Command="{Binding DataContext.ClickReviewCommand,
+                            <Border Background="#FDF8F5" CornerRadius="8"
+                                    BorderBrush="#E0C8BC" BorderThickness="1"
+                                    Padding="14,10" Margin="0,0,0,10">
+                                <StackPanel Spacing="4">
+                                    <TextBlock Text="{Binding ReviewText}"
+                                               FontSize="12" Foreground="#7A6A6A"
+                                               TextWrapping="Wrap"/>
+                                    <StackPanel Orientation="Horizontal" Spacing="4">
+                                        <TextBlock Text="" FontSize="12"/>
+                                        <TextBlock Text="{Binding Rating}"
+                                                   FontSize="12" Foreground="#C8966E"
+                                                   FontWeight="SemiBold"/>
+                                    </StackPanel>
+                                    <Button Content="Заблокировать" 
+                                            IsVisible="{Binding ElementName=Page, Path=DataContext.VisibleButton}"
+                                            Background="#C8966E" Foreground="White"
+                                            CornerRadius="6" Padding="10,5" FontSize="13" Margin="0,10,0,0"
+                                            Command="{Binding DataContext.ClickReviewCommand,
                                        RelativeSource={RelativeSource AncestorType=ListBox}}"
-                                        CommandParameter="{Binding}"
-                                />
-                                
-                            </StackPanel>
+                                            CommandParameter="{Binding}"
+                                    />
+                                </StackPanel>
+                            </Border>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                </ListBox> 
+                </ListBox>
+                
             </Grid>
                
                 <StackPanel>
                     <Button Content="Заблокировать Книгу"
                             IsVisible="{Binding VisibleButton}"
                             Command="{Binding FrozeBookClickCommand}"/>
+                </StackPanel>
+                <StackPanel>
+                    <Button Content="Подать жалобу на Книгу"
+                            IsVisible="{Binding VisibleButtonForStandartUs}"
+                            Command="{Binding BidBookClickCommand}"
+                            Background="#C8966E" Foreground="White"/>
+                    <Button Content="Подать жалобу на Отзыв "
+                            IsVisible="{Binding VisibleButtonForStandartUs}"
+                            Command="{Binding BidReviewClickCommand}"
+                            Background="#C8966E" Foreground="White"
+                            Margin="0,10,0,0"/>
+                    <Button Content="Подать жалобу на Автора"
+                            IsVisible="{Binding VisibleButtonForStandartUs}"
+                            Command="{Binding BidAuthorClickCommand}"
+                            Background="#C8966E" Foreground="White"
+                            Margin="0,10,0,0"/>
                 </StackPanel>
                 </StackPanel>
         </Border>

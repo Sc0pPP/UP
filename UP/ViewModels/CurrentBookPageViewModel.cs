@@ -36,13 +36,19 @@ public partial class CurrentBookPageViewModel:ObservableObject
 
     [ObservableProperty] 
     private bool _visibleButton;
+    
+    [ObservableProperty]
+    private Review _selectedReview;
+
+    [ObservableProperty] 
+    private bool _visibleButtonForStandartUs;
 
     public CurrentBookPageViewModel(NavigationService navigationService,AppState appState)
     {
         
        
         _appState = appState;
-        _navigationService = navigationService; 
+        _navigationService = navigationService;
         _name = _appState.CurrentBook.Name;
         _author = Core.db.Users.FirstOrDefault(u => u.UserId == _appState.CurrentBook.Author).fio;
         _bookGenres = _appState.CurrentBook.BookGenres;
@@ -56,6 +62,7 @@ public partial class CurrentBookPageViewModel:ObservableObject
        if(_appState.CurrentUser.Role==1)
         {
             VisibleButton = false;
+            _visibleButtonForStandartUs = true;
         }
         if(_appState.CurrentUser.Role==2)
         {
@@ -78,4 +85,31 @@ public partial class CurrentBookPageViewModel:ObservableObject
         TempBook.IsFrozen=true;
         Core.db.SaveChanges();
     }
+
+    [RelayCommand]
+    public void BidBookClick()
+    {
+        _appState.ReportType = BidTypes.BookReport;
+        _navigationService.ReplaceToAsync<BidPageViewModel>();
+    }
+    [RelayCommand]
+    public void BidReviewClick()
+    {
+        _appState.ReportType = BidTypes.ReviewReport;
+        _navigationService.ReplaceToAsync<BidPageViewModel>();
+    }
+    
+    [RelayCommand]
+    public void BidAuthorClick()
+    {
+        _appState.ReportType = BidTypes.AuthorReport;
+        _navigationService.ReplaceToAsync<BidPageViewModel>();
+    }
+    
+    partial void OnSelectedReviewChanged(Review? value)
+    {
+        if (value != null)
+            _appState.CurrentReview = value;
+    }
+    
 }

@@ -97,5 +97,18 @@ public partial class FirstPageViewModel : ObservableObject
         _appState.CurrentBook=book;
         _navigationService.ReplaceToAsync<CurrentBookPageViewModel>();
     }
+    [RelayCommand]
+    private void AddCLickBook(Book book)
+    {
+        ReadingList rl = new ReadingList()
+        {
+            UserId = _appState.CurrentUser.UserId,
+            Book = book,
+            ReadingListType = 2
+        };
+        Core.db.ReadingLists.Add(rl);
+        Core.db.SaveChanges();
+        MessageBoxService.MessageBoxShow("Книга добавлена в список");
+    }
 }
 

@@ -41,6 +41,7 @@ public partial class App : Application
         builder.Services.AddTransient<AdminPage>();
         builder.Services.AddTransient<AuthorPage>();
         builder.Services.AddTransient<FreezePage>();
+        builder.Services.AddTransient<BidPage>();
         //ViewModels
         builder.Services.AddSingleton<MainWindowViewModel>(); 
         builder.Services.AddTransient<AuthPageViewModel>();
@@ -52,6 +53,7 @@ public partial class App : Application
         builder.Services.AddTransient<AdminPageViewModel>();
         builder.Services.AddTransient<AuthorPageViewModel>();
         builder.Services.AddTransient<FreezePageViewModel>();
+        builder.Services.AddTransient<BidPageViewModel>();
         
         _host = builder.Build();
         
