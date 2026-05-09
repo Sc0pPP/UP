@@ -5,5 +5,95 @@
              xmlns:views="clr-namespace:UP.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UP.Views.ListsPage">
-    ListsPage
+    <Grid RowDefinitions="50,*" Background="#FDF8F5">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="8"
+                    VerticalAlignment="Center" Margin="10,0">
+            <Button Content="В планах"
+                    Command="{Binding PlansClickCommand}" 
+                    Foreground="White" CornerRadius="8" Height="34" Padding="14,0" FontSize="13"/>
+            <Button Content="Читаю"
+                    Command="{Binding ReadingClickCommand}" 
+                    Foreground="White"
+                    CornerRadius="8" Height="34" Padding="14,0" FontSize="13"/>
+            <Button Content="Прочитано"
+                    Command="{Binding ReadClickCommand}" CommandParameter="4"
+                    Foreground="White" CornerRadius="8" Height="34" Padding="14,0" FontSize="13"/>
+            <Button Content="Заброшено"
+                    Command="{Binding СbandonedClickCommand}" CommandParameter="1"
+                    Foreground="White" CornerRadius="8" Height="34" Padding="14,0" FontSize="13"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,12,0">
+                <TextBlock Text="Фильтр по автору" Foreground="#7A6A6A" FontSize="12"
+                           HorizontalAlignment="Center" Margin="0,0,0,4"/>
+                <TextBox Width="150" Name="Author" 
+                         CornerRadius="6" BorderBrush="#E0C8BC" Height="22"
+                         Text="{Binding SearchAuthor}"
+                />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,16,0">
+                <TextBlock Text="Фильтр по названию" Foreground="#7A6A6A" FontSize="12"
+                           HorizontalAlignment="Center" Margin="0,0,0,4"/>
+                <TextBox Width="150" Name="Master" 
+                         CornerRadius="6" BorderBrush="#E0C8BC" Height="22"
+                         Text="{Binding SearchName}"
+                />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,16,0">
+                <TextBlock Text="Фильтр по Жанру" Foreground="#7A6A6A" FontSize="12"
+                           HorizontalAlignment="Center" Margin="0,0,0,4"/>
+                <ComboBox Text="Жанр"
+                          ItemsSource="{Binding GenresList}"
+                          SelectedItem="{Binding SelectedGenre}"
+                          HorizontalAlignment="Center"
+                          Width="120"
+                />
+            </StackPanel>
+        </StackPanel>
+        <Border Grid.Row="1" BorderThickness="1" BorderBrush="#E0C8BC"
+                Background="White" Margin="10" CornerRadius="10">
+            <ListBox ItemsSource="{Binding BooksIS}"
+                     Background="Transparent" BorderThickness="0" Margin="10">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="White" BorderBrush="#F0E0D6" BorderThickness="1"
+                                CornerRadius="8" Padding="12" Margin="6">
+                            <StackPanel Orientation="Vertical" Spacing="4">
+                                <TextBlock Text="{Binding Book.Name}" FontWeight="SemiBold"
+                                           FontSize="15" Foreground="#2D2D2D"/>
+                                <TextBlock Text="{Binding Book.AuthorNavigation.fio}"
+                                           FontSize="13" Foreground="#7A6A6A"/>
+                                <TextBlock Text="{Binding Book.Description}"
+                                           FontSize="12" Foreground="#9A8A8A" TextWrapping="Wrap"/>
+                                
+                                <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,6,0,0">
+                                    <Button Content="Подробнее"
+                                            Background="#C8966E" Foreground="White"
+                                            CornerRadius="6" Padding="10,5" FontSize="12"
+                                            Command="{Binding DataContext.ClickBookCommand,
+                                                      RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                            CommandParameter="{Binding}"/>
+                                    <Button Content="Перенести →"
+                                            Background="#A0785A" Foreground="White"
+                                            CornerRadius="6" Padding="10,5" FontSize="12"
+                                            Command="{Binding DataContext.MoveToListCommand,
+                                                      RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                            CommandParameter="{Binding}"/>
+                                    <Button Content="Удалить"
+                                            Background="#E0C8BC" Foreground="#7A6A6A"
+                                            CornerRadius="6" Padding="10,5" FontSize="12"
+                                            Command="{Binding DataContext.RemoveFromListCommand,
+                                                      RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                            CommandParameter="{Binding}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Border>
+    </Grid>
 </ContentPage>

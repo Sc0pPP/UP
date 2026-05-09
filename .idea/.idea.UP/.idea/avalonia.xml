@@ -14,6 +14,7 @@
         <entry key="UP/Views/ListsPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/MainWindow.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/ProfilePage.axaml" value="UP/UP.csproj" />
+        <entry key="UP/Views/ReadingListPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/RegistrationPage.axaml" value="UP/UP.csproj" />
       </map>
     </option>
