@@ -9,6 +9,7 @@
         <entry key="UP/Views/AuthorPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/BidPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/CurrentBookPage.axaml" value="UP/UP.csproj" />
+        <entry key="UP/Views/EditBookAuthorPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/FirstPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/FreezePage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/ListsPage.axaml" value="UP/UP.csproj" />

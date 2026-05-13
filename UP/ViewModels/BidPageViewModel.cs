@@ -15,16 +15,23 @@ public partial class BidPageViewModel : ObservableObject
 
     private readonly NavigationService _navigationService;
 
-    [ObservableProperty] private string _cause = string.Empty;
+    [ObservableProperty] 
+    private string _cause = string.Empty;
 
-    [ObservableProperty] private string _targetDescription = string.Empty;
-    [ObservableProperty] private IEnumerable<BidTypes> _reportTypes = Enum.GetValues<BidTypes>();
+    [ObservableProperty] 
+    private string _targetDescription = string.Empty;
+    [ObservableProperty] 
+    private IEnumerable<BidTypes> _reportTypes = Enum.GetValues<BidTypes>();
+
+    [ObservableProperty] 
+    private BidTypes _selectedReportType;
 
 
     public BidPageViewModel(AppState appState, NavigationService navigationService)
     {
         _appState = appState;
         _navigationService = navigationService;
+        SelectedReportType = appState.ReportType; 
         TargetDescription = appState.ReportType switch
         {
             BidTypes.BookReport or BidTypes.FreezeBookReport =>
@@ -38,6 +45,7 @@ public partial class BidPageViewModel : ObservableObject
 
             BidTypes.FreezeUserReport =>
                 $"Заморозка отзыва",
+            
             BidTypes.AuthorBid=>
                 $"Заявка на получение роли автора",
 
@@ -49,8 +57,8 @@ public partial class BidPageViewModel : ObservableObject
     private async Task Submit()
     {
         if (string.IsNullOrWhiteSpace(Cause)) return;
-
-        switch (_appState.ReportType)
+        Console.WriteLine($"DEBUG: type={SelectedReportType}, user={_appState.CurrentUser?.UserId}, book={_appState.CurrentBook?.BookId}");
+        switch (SelectedReportType)
         {
             case BidTypes.BookReport:
                 await Core.db.Reports.AddAsync(new Report
@@ -85,13 +93,13 @@ public partial class BidPageViewModel : ObservableObject
             case BidTypes.FreezeBookReport:
                 await Core.db.FrozenBids.AddAsync(new FrozenBid
                 {
-                    UserId = _appState.CurrentUser!.UserId,
-                    BookId = _appState.CurrentBook!.BookId,
+                    UserId = _appState.CurrentUser.UserId,
+                    BookId = _appState.CurrentBook.BookId,
                     Bid = Cause
                 });
                 break;
 
-                    case BidTypes.FreezeAuthorReport:
+            case BidTypes.FreezeAuthorReport:
                         await Core.db.FrozenBids.AddAsync(new FrozenBid
                         {
                             UserId = _appState.CurrentUser!.UserId,
@@ -100,7 +108,7 @@ public partial class BidPageViewModel : ObservableObject
                         });
                         break;
             
-                    case BidTypes.FreezeUserReport:
+            case BidTypes.FreezeUserReport:
                         await Core.db.FrozenBids.AddAsync(new FrozenBid
                         {
                             UserId = _appState.CurrentUser!.UserId,
@@ -119,6 +127,7 @@ public partial class BidPageViewModel : ObservableObject
             {
                 _navigationService.ReplaceToAsync<ProfilePageViewModel>();
             }
+            
         }
     
     

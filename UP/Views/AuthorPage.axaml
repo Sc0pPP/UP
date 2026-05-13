@@ -4,5 +4,135 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UP.Views.AuthorPage">
-    Welcome to Avalonia!
+    <Grid Background="#FDF8F5">
+    <Border HorizontalAlignment="Stretch"
+            BorderThickness="1" BorderBrush="#E0C8BC"
+            Background="White" Margin="20" CornerRadius="12">
+        <Grid Margin="24" ColumnDefinitions="220,*,360">
+
+          
+            <StackPanel Grid.Column="0" Spacing="0" VerticalAlignment="Top">
+                <TextBlock Text="Автор" FontSize="13" FontWeight="SemiBold"
+                           Foreground="#C8966E" Margin="0,0,0,14"/>
+
+   
+                <StackPanel Spacing="2" Margin="0,0,0,12">
+                    <TextBlock Text="ФИО" FontSize="11" Foreground="#B0A0A0"/>
+                    <TextBlock Text="{Binding UserFio}" FontSize="15"
+                               FontWeight="SemiBold" Foreground="#3D2C2C"/>
+                </StackPanel>
+
+
+                <StackPanel Spacing="2" Margin="0,0,0,12">
+                    <TextBlock Text="Email" FontSize="11" Foreground="#B0A0A0"/>
+                    <TextBlock Text="{Binding Mail}" FontSize="14"
+                               Foreground="#5A4A4A" TextWrapping="Wrap"/>
+                </StackPanel>
+
+
+                <StackPanel Spacing="2" Margin="0,0,0,20">
+                    <TextBlock Text="Телефон" FontSize="11" Foreground="#B0A0A0"/>
+                    <TextBlock Text="{Binding Phone}" FontSize="14"
+                               Foreground="#5A4A4A"/>
+                </StackPanel>
+
+
+                <Border Height="1" Background="#F0E4DC" Margin="0,0,0,20"/>
+
+
+                <Button Content="Добавить книгу"
+                        Height="38" HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        Command="{Binding AddBookClickCommand}"
+                        Background="#C8966E" Foreground="White"
+                        CornerRadius="8" FontSize="13" FontWeight="SemiBold"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Column="1" Margin="24,0" >
+                <TextBlock Text="Мои книги" FontSize="13" FontWeight="SemiBold"
+                           Foreground="#C8966E" Margin="0,0,0,14"/>
+               <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="prod"
+                    ItemsSource="{Binding BooksIS}"
+                    SelectedItem="{Binding SelectedBook}"
+                    Margin="10" Background="Transparent"
+                    Height="400">
+               <ListBox.ItemTemplate>
+                   <DataTemplate>
+                       <Border Background="White" BorderBrush="#F0E0D6" BorderThickness="1"
+                               CornerRadius="8" Padding="12" Margin="6">
+                           <StackPanel Orientation="Vertical" Spacing="0">
+                               <TextBlock Text="{Binding Name}" FontWeight="SemiBold"
+                                          FontSize="15" Foreground="#2D2D2D"/>
+                               <ListBox ItemsSource="{Binding BookGenres}"
+                                        Background="Transparent" BorderThickness="0">
+                                   <ListBox.ItemTemplate>
+                                       <DataTemplate>
+                                           <StackPanel Spacing="2" Margin="0,2,0,2">
+                                               <TextBlock Text="{Binding Genre.Genre1}"
+                                                          Foreground="#5A4A4A" FontSize="13"/>
+                                           </StackPanel>
+                                       </DataTemplate>
+                                   </ListBox.ItemTemplate>
+                               </ListBox>
+                               <StackPanel>
+                               <Button Content="Подробнее" 
+                                       Background="#C8966E" Foreground="White"
+                                       CornerRadius="6" Padding="10,5" FontSize="13" Margin="0,10,0,0"
+                                       Command="{Binding DataContext.CLickBookCommand,
+                                       RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                       CommandParameter="{Binding}"
+                                       />
+                               </StackPanel>
+                           </StackPanel>
+                       </Border>
+                   </DataTemplate>
+               </ListBox.ItemTemplate>
+           </ListBox>
+            </StackPanel>
+           <StackPanel Grid.Column="2">
+                <TextBlock Text="Замороженные книги" FontSize="13" FontWeight="SemiBold"
+                           Foreground="#C8966E" Margin="0,0,0,14"/>
+               <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="FrozeBooks"
+                    ItemsSource="{Binding FrozeBooksIS}"
+                    SelectedItem="{Binding SelectedFreezeBook}"
+                    Margin="10" Background="Transparent"
+                    Height="400">
+               <ListBox.ItemTemplate>
+                   <DataTemplate>
+                       <Border Background="White" BorderBrush="#F0E0D6" BorderThickness="1"
+                               CornerRadius="8" Padding="12" Margin="6">
+                           <StackPanel Orientation="Vertical" Spacing="0">
+                               <TextBlock Text="{Binding Name}" FontWeight="SemiBold"
+                                          FontSize="15" Foreground="#2D2D2D"/>
+                               <ListBox ItemsSource="{Binding BookGenres}"
+                                        Background="Transparent" BorderThickness="0">
+                                   <ListBox.ItemTemplate>
+                                       <DataTemplate>
+                                           <StackPanel Spacing="2" Margin="0,2,0,2">
+                                               <TextBlock Text="{Binding Genre.Genre1}"
+                                                          Foreground="#5A4A4A" FontSize="13"/>
+                                           </StackPanel>
+                                       </DataTemplate>
+                                   </ListBox.ItemTemplate>
+                               </ListBox>
+                               <StackPanel>
+                               <Button Content="Подать заявку на разморозку" 
+                                       Background="#C8966E" Foreground="White"
+                                       CornerRadius="6" Padding="10,5" FontSize="13" Margin="0,10,0,0"
+                                       Command="{Binding DataContext.CLickFreezeBookCommand,
+                                       RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                       CommandParameter="{Binding}"
+                                       />
+                               </StackPanel>
+                           </StackPanel>
+                       </Border>
+                   </DataTemplate>
+               </ListBox.ItemTemplate>
+           </ListBox>
+           </StackPanel>
+            
+        </Grid>
+    </Border>
+</Grid>
 </ContentPage>
