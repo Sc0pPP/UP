@@ -67,13 +67,13 @@ public partial class AuthorPageViewModel:ObservableObject
     public void CLickBook(Book book)
     {
         _appState.CurrentBook = book;
-        
+        _navigationService.ReplaceToAsync<EditBookAuthorPageViewModel>();
     }
 
     [RelayCommand]
     public void AddBookClick()
     {
-        
+        _navigationService.ReplaceToAsync<AddBookPageViewModel>();
     }
     
 }

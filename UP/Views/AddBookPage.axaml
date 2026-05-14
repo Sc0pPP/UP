@@ -3,10 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="UP.Views.EditBookAuthorPage">
+             x:Class="UP.Views.AddBookPage">
     <Grid>
          <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="250"/>
             <RowDefinition Height="*"/>
            
         </Grid.RowDefinitions>
@@ -15,29 +15,27 @@
                 Margin="10,10,10,5" CornerRadius="10" >
             <StackPanel Orientation="Horizontal"  >
             <StackPanel Width="300" HorizontalAlignment="Left" >
-            <TextBox Text="{Binding CurrentBook.Name}" FontSize="14" HorizontalAlignment="Center"
-                       Foreground="#C8966E" LetterSpacing="3" Margin="0,0,0,6"/>
-            <TextBox Text="{Binding CurrentBook.AuthorNavigation.fio}" FontSize="14" HorizontalAlignment="Center"
-                       Foreground="#C8966E" LetterSpacing="3" Margin="0,0,0,6"/>
-            <TextBox Text="{Binding CurrentBook.Description}" FontSize="13" TextWrapping="Wrap" HorizontalAlignment="Center"
-                       Foreground="#C8966E"  Margin="0,0,0,6"/>
-           
-                
-            </StackPanel>
-                <StackPanel>
-                    <ListBox ItemsSource="{Binding CurrentBook.BookGenres}"
-                             Background="Transparent" BorderThickness="0">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Spacing="2" Margin="0,2,0,2">
-                                    <TextBlock Text="{Binding Genre.Genre1}"
-                                               Foreground="#5A4A4A" FontSize="13"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="Название" FontSize="13" FontWeight="SemiBold"
+                           Foreground="#C8966E" Margin="0,0,0,10"/>
+                <TextBox Width="100" Text="{Binding Name}" FontSize="14" HorizontalAlignment="Center"
+                         Foreground="#C8966E" LetterSpacing="3" Margin="0,0,0,6"/>
                 </StackPanel>
-                <StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Автор" FontSize="13" FontWeight="SemiBold"
+                               Foreground="#C8966E" Margin="0,0,0,14"/>
+                    <TextBlock Text="{Binding UserName}"  FontSize="14" HorizontalAlignment="Center"
+                             Foreground="#C8966E" LetterSpacing="3" Margin="0,0,0,6"/>
+                <StackPanel/>
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="Описание" FontSize="13" FontWeight="SemiBold"
+                                   Foreground="#C8966E" Margin="0,0,0,14"/>
+                        <TextBox Width="100" Text="{Binding Description}" Height="50" FontSize="13" TextWrapping="Wrap" HorizontalAlignment="Center"
+                                 Foreground="#C8966E"  Margin="0,0,0,6"/>
+                    </StackPanel>
+            </StackPanel>
+                </StackPanel>
+                    <StackPanel>
                     <ListBox ItemsSource="{Binding AllGenres}"
                              SelectedItem="{Binding CurrentGenre}"
                              Background="Transparent" BorderThickness="0"
@@ -59,7 +57,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </StackPanel>
-                    <Button Content="Сохранить"  Command="{Binding SaveClickCommand}"/>
+                    <Button Content="Добавить"  Command="{Binding AddClickCommand}"/>
             </StackPanel>
         </Border>
 
@@ -67,7 +65,7 @@
                 Margin="10,5,10,5" CornerRadius="10" Padding="16">
             <ScrollViewer VerticalScrollBarVisibility="Auto"
                           HorizontalScrollBarVisibility="Disabled">
-                <TextBox Text="{Binding CurrentBook.Content}"
+                <TextBox Text="{Binding Context}"
                            TextWrapping="Wrap" />
             </ScrollViewer>
         </Border>

@@ -4,6 +4,8 @@
     <option name="projectPerEditor">
       <map>
         <entry key="UP/App.axaml" value="UP/UP.csproj" />
+        <entry key="UP/ViewModels/AddBookPageViewModel.axaml" value="UP/UP.csproj" />
+        <entry key="UP/Views/AddBookPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/AdminPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/AuthPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/AuthorPage.axaml" value="UP/UP.csproj" />

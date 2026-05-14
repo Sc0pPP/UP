@@ -39,6 +39,9 @@ build_property.EnableCodeStyleSeverity =
 [C:/Users/Scop/RiderProjects/UP/UP/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/Scop/RiderProjects/UP/UP/Views/AddBookPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/Scop/RiderProjects/UP/UP/Views/AdminPage.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 

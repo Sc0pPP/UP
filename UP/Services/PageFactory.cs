@@ -31,6 +31,7 @@ public class PageFactory
             var t when t == typeof(AuthorPageViewModel)=>_serviceProvider.GetRequiredService<AuthorPage>(),
             var t when t == typeof(BidPageViewModel)=>_serviceProvider.GetRequiredService<BidPage>(),
             var t when t == typeof(EditBookAuthorPageViewModel)=>_serviceProvider.GetRequiredService<EditBookAuthorPage>(),
+            var t when t == typeof(AddBookPageViewModel)=>_serviceProvider.GetRequiredService<AddBookPage>()
         };
     }
 }
