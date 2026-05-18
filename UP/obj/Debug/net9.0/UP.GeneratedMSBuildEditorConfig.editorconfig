@@ -45,6 +45,21 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [C:/Users/Scop/RiderProjects/UP/UP/Views/AdminPage.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/Scop/RiderProjects/UP/UP/Views/AdminViews/AdminAuthorBidPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Scop/RiderProjects/UP/UP/Views/AdminViews/AdminFrozenBidPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Scop/RiderProjects/UP/UP/Views/AdminViews/AdminFrozenListPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Scop/RiderProjects/UP/UP/Views/AdminViews/AdminReportPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Scop/RiderProjects/UP/UP/Views/AdminViews/AdminUsersListPage.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/Scop/RiderProjects/UP/UP/Views/AuthorPage.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 

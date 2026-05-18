@@ -43,6 +43,12 @@ public partial class CurrentBookPageViewModel:ObservableObject
     [ObservableProperty] 
     private bool _visibleButtonForStandartUs;
 
+    [ObservableProperty] 
+    private string _reviewTextBox;
+
+    [ObservableProperty]
+    private int _rating = 5;
+    
     public CurrentBookPageViewModel(NavigationService navigationService,AppState appState)
     {
         
@@ -110,6 +116,22 @@ public partial class CurrentBookPageViewModel:ObservableObject
     {
         if (value != null)
             _appState.CurrentReview = value;
+    }
+
+    [RelayCommand]
+    public void AddReviewClick()
+    {
+        Review rev=new Review()
+        {
+            UserId = _appState.CurrentUser.UserId,
+            ReviewText = ReviewTextBox,
+            BookId = _appState.CurrentBook.BookId,
+            IsFrozen=false,
+            Rating = Rating
+        };
+        Core.db.Reviews.Add(rev);
+        Core.db.SaveChanges();
+        MessageBoxService.MessageBoxShow("Ваш отзыв добавлен");
     }
     
 }

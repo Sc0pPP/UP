@@ -24,15 +24,16 @@
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,12,0">
                 <TextBlock Text="Фильтр по автору" Foreground="#7A6A6A" FontSize="12"
                            HorizontalAlignment="Center" Margin="0,0,0,4"/>
-                <TextBox Width="150" Name="Author" 
+                <TextBox Width="120" Name="Author" 
                          CornerRadius="6" BorderBrush="#E0C8BC" Height="22"
                          Text="{Binding SearchAuthor}"
                 />
+                
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,16,0">
                 <TextBlock Text="Фильтр по названию" Foreground="#7A6A6A" FontSize="12"
                            HorizontalAlignment="Center" Margin="0,0,0,4"/>
-                <TextBox Width="150" Name="Master" 
+                <TextBox Width="120" Name="Master" 
                          CornerRadius="6" BorderBrush="#E0C8BC" Height="22"
                          Text="{Binding SearchName}"
                 />
@@ -43,6 +44,26 @@
                 <ComboBox Text="Жанр"
                           ItemsSource="{Binding GenresList}"
                           SelectedItem="{Binding SelectedGenre}"
+                          HorizontalAlignment="Center"
+                          Width="120"
+                />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,16,0">
+                <TextBlock Text="Сортировка по автору" Foreground="#7A6A6A" FontSize="12"
+                           HorizontalAlignment="Center" Margin="0,0,0,4"/>
+                <ComboBox Text="Author"
+                          ItemsSource="{Binding AuthorCombo}"
+                          SelectedItem="{Binding SelectedAuthorCombo}"
+                          HorizontalAlignment="Center"
+                          Width="120"
+                />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,16,0">
+                <TextBlock Text="Сортировка по рейтингу" Foreground="#7A6A6A" FontSize="12"
+                           HorizontalAlignment="Center" Margin="0,0,0,4"/>
+                <ComboBox Text="Rating"
+                          ItemsSource="{Binding RatingCombo}"
+                          SelectedItem="{Binding SelectedRatingCombo}"
                           HorizontalAlignment="Center"
                           Width="120"
                 />

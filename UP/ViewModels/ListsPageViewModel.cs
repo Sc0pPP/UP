@@ -27,6 +27,18 @@ public partial class ListsPageViewModel : ObservableObject
     private List<string> _genresList = Core.db.Genres.Select(g => g.Genre1).ToList();
     [ObservableProperty] 
     private string _selectedGenre;
+    
+    [ObservableProperty]
+    private List<string> _authorCombo = new List<string>{"По умолчанию", "По возрастанию", "По Убыванию"};
+
+    [ObservableProperty]
+    private List<string> _ratingCombo=new List<string>{"По умолчанию", "По возрастанию", "По Убыванию"};
+
+    [ObservableProperty] 
+    private string _selectedAuthorCombo = "По умолчанию";
+    
+    [ObservableProperty] 
+    private string _selectedRatingCombo = "По умолчанию";
 
     public ListsPageViewModel(NavigationService navigationService, AppState appState)
     {
@@ -61,6 +73,31 @@ public partial class ListsPageViewModel : ObservableObject
         {
             filteredAll= filteredAll.Where(b => b.Book.BookGenres.Count(bg => bg.Genre.Genre1 == _selectedGenre) > 0).ToList();
         }
+        
+        if (SelectedAuthorCombo != "По умолчанию")
+        {
+            if (SelectedAuthorCombo == "По возрастанию")
+            {
+                filteredAll = filteredAll.OrderBy(b => b.Book.AuthorNavigation.fio).ToList();
+            }
+
+            if (SelectedAuthorCombo == "По Убыванию")
+            {
+                filteredAll = filteredAll.OrderByDescending(b => b.Book.AuthorNavigation.fio).ToList();
+            }
+        } 
+        if (SelectedRatingCombo != "По умолчанию")
+        {
+            if (SelectedRatingCombo == "По возрастанию")
+            {
+                filteredAll = filteredAll.OrderBy(b => b.Book.Review).ToList();
+            }
+
+            if (SelectedRatingCombo == "По Убыванию")
+            {
+                filteredAll = filteredAll.OrderByDescending(b => b.Book.Review).ToList();
+            }
+        } 
         BooksIS=new ObservableCollection<ReadingList>(filteredAll);
         
     }
@@ -74,6 +111,16 @@ public partial class ListsPageViewModel : ObservableObject
         filtered();
     }
     partial void OnSelectedGenreChanged(string value)
+    {
+        filtered();
+    }
+    
+    partial void OnSelectedAuthorComboChanged(string value)
+    {
+        filtered();
+    }
+    
+    partial void OnSelectedRatingComboChanged(string value)
     {
         filtered();
     }
@@ -124,6 +171,7 @@ public partial class ListsPageViewModel : ObservableObject
         Core.db.SaveChanges();
        filtered();
     }
+    
 
     [RelayCommand]
     private void RemoveFromList(ReadingList item)

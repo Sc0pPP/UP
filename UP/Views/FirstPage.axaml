@@ -42,6 +42,26 @@
                           Width="120"
                           />
             </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,16,0">
+                <TextBlock Text="Сортировка по автору" Foreground="#7A6A6A" FontSize="12"
+                           HorizontalAlignment="Center" Margin="0,0,0,4"/>
+                <ComboBox Text="Author"
+                          ItemsSource="{Binding AuthorCombo}"
+                          SelectedItem="{Binding SelectedAuthorCombo}"
+                          HorizontalAlignment="Center"
+                          Width="120"
+                />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,16,0">
+                <TextBlock Text="Сортировка по рейтингу" Foreground="#7A6A6A" FontSize="12"
+                           HorizontalAlignment="Center" Margin="0,0,0,4"/>
+                <ComboBox Text="Rating"
+                          ItemsSource="{Binding RatingCombo}"
+                          SelectedItem="{Binding SelectedRatingCombo}"
+                          HorizontalAlignment="Center"
+                          Width="120"
+                />
+            </StackPanel>
             </StackPanel>
         <Border Grid.Row="1" BorderThickness="1" BorderBrush="#E0C8BC" Background="White"
                 Margin="10" CornerRadius="10">

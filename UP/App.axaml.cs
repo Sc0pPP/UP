@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using UP.Services;
 using UP.ViewModels;
 using UP.Views;
+using UP.Views.AdminViews;
 
 namespace UP;
 
@@ -44,6 +45,12 @@ public partial class App : Application
         builder.Services.AddTransient<BidPage>();
         builder.Services.AddTransient<EditBookAuthorPage>();
         builder.Services.AddTransient<AddBookPage>();
+        builder.Services.AddTransient<AdminReportPage>();
+        builder.Services.AddTransient<AdminFrozenBidPage>();
+        builder.Services.AddTransient<AdminAuthorBidPage>();
+        builder.Services.AddTransient<AdminFrozenListPage>();
+        builder.Services.AddTransient<AdminReportPage>();
+        builder.Services.AddTransient<AdminUsersListPage>();
         //ViewModels
         builder.Services.AddSingleton<MainWindowViewModel>(); 
         builder.Services.AddTransient<AuthPageViewModel>();
@@ -58,6 +65,13 @@ public partial class App : Application
         builder.Services.AddTransient<BidPageViewModel>();
         builder.Services.AddTransient<EditBookAuthorPageViewModel>();
         builder.Services.AddTransient<AddBookPageViewModel>();
+        builder.Services.AddTransient<AdminReportPageViewModel>();
+        builder.Services.AddTransient<AdminFrozenBidPageViewModel>();
+        builder.Services.AddTransient<AdminAuthorBidPageViewModel>();
+        builder.Services.AddTransient<AdminFrozenListPageViewModel>();
+        builder.Services.AddTransient<AdminUsersListPageViewModel>();
+
+
         
         _host = builder.Build();
         

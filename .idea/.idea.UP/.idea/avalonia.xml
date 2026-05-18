@@ -7,6 +7,11 @@
         <entry key="UP/ViewModels/AddBookPageViewModel.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/AddBookPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/AdminPage.axaml" value="UP/UP.csproj" />
+        <entry key="UP/Views/AdminViews/AdminAuthorBidPage.axaml" value="UP/UP.csproj" />
+        <entry key="UP/Views/AdminViews/AdminFrozenBidPage.axaml" value="UP/UP.csproj" />
+        <entry key="UP/Views/AdminViews/AdminFrozenListPage.axaml" value="UP/UP.csproj" />
+        <entry key="UP/Views/AdminViews/AdminReportPage.axaml" value="UP/UP.csproj" />
+        <entry key="UP/Views/AdminViews/AdminUsersListPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/AuthPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/AuthorPage.axaml" value="UP/UP.csproj" />
         <entry key="UP/Views/BidPage.axaml" value="UP/UP.csproj" />

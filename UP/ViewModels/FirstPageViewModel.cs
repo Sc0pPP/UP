@@ -36,6 +36,18 @@ public partial class FirstPageViewModel : ObservableObject
     [ObservableProperty] 
     private string _selectedGenre;
 
+    [ObservableProperty]
+    private List<string> _authorCombo = new List<string>{"По умолчанию", "По возрастанию", "По Убыванию"};
+
+    [ObservableProperty]
+    private List<string> _ratingCombo=new List<string>{"По умолчанию", "По возрастанию", "По Убыванию"};
+
+    [ObservableProperty] 
+    private string _selectedAuthorCombo = "По умолчанию";
+    
+    [ObservableProperty] 
+    private string _selectedRatingCombo = "По умолчанию";
+
     public FirstPageViewModel(NavigationService navigationService,AppState appState)
     {
         
@@ -72,6 +84,33 @@ public partial class FirstPageViewModel : ObservableObject
         {
             filteredAll= filteredAll.Where(b => b.BookGenres.Count(bg => bg.Genre.Genre1 == SelectedGenre) > 0).ToList();
         }
+
+        if (SelectedAuthorCombo != "По умолчанию")
+        {
+            if (SelectedAuthorCombo == "По возрастанию")
+            {
+                filteredAll = filteredAll.OrderBy(b => b.AuthorNavigation.fio).ToList();
+            }
+
+            if (SelectedAuthorCombo == "По Убыванию")
+            {
+                filteredAll = filteredAll.OrderByDescending(b => b.AuthorNavigation.fio).ToList();
+            }
+        } 
+        if (SelectedRatingCombo != "По умолчанию")
+        {
+            if (SelectedRatingCombo == "По возрастанию")
+            {
+                filteredAll = filteredAll.OrderBy(b => b.Review).ToList();
+            }
+
+            if (SelectedRatingCombo == "По Убыванию")
+            {
+                filteredAll = filteredAll.OrderByDescending(b => b.Review).ToList();
+            }
+        } 
+        
+        
         BooksIS=new ObservableCollection<Book>(filteredAll);
         
     }
@@ -89,6 +128,15 @@ public partial class FirstPageViewModel : ObservableObject
     {
         filtered();
     }
+    partial void OnSelectedAuthorComboChanged(string value)
+    {
+        filtered();
+    }
+    partial void OnSelectedRatingComboChanged(string value)
+    {
+        filtered();
+    }
+    
     
 
     [RelayCommand]
@@ -109,6 +157,25 @@ public partial class FirstPageViewModel : ObservableObject
         Core.db.ReadingLists.Add(rl);
         Core.db.SaveChanges();
         MessageBoxService.MessageBoxShow("Книга добавлена в список");
+    }
+    
+    public void SortAuthor()
+    {
+      BooksIS=new ObservableCollection<Book>(Core.db.Books.Include(b=>b.BookGenres)
+          .ThenInclude(b=>b.Genre)
+          .Include(b=>b.AuthorNavigation)
+          .Where(u=>u.IsFrozen==false)
+          .ToList().OrderBy(b=>b.AuthorNavigation.fio));  
+    }
+
+
+    public void SortRating()
+    {
+        BooksIS=new ObservableCollection<Book>(Core.db.Books.Include(b=>b.BookGenres)
+            .ThenInclude(b=>b.Genre)
+            .Include(b=>b.AuthorNavigation)
+            .Where(u=>u.IsFrozen==false)
+            .ToList().OrderBy(b=>b.Review));  
     }
 }
 

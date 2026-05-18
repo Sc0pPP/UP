@@ -1,25 +1,27 @@
-using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Extensions.DependencyInjection;
+using UP.Models;
 using UP.Services;
 
 namespace UP.ViewModels;
 
-public partial class AdminPageViewModel:ObservableObject
+public partial class AdminUsersListPageViewModel:ObservableObject
 {
-    private readonly NavigationService _navigationService;
-    private readonly AppState _appState;
-
-    public AdminPageViewModel(NavigationService navigationService, AppState appState)
+    NavigationService _navigationService;
+    AppState _appState;
+    
+    [ObservableProperty]
+    private ObservableCollection<User> _allRL;
+    
+    public AdminUsersListPageViewModel(NavigationService navigationService,AppState appState)
     {
         _navigationService = navigationService;
         _appState = appState;
-        
-        
+        AllRL=new ObservableCollection<User>(Core.db.Users.ToList());
     }
-
-
+    
     [RelayCommand]
     public void AuthorBidClick()
     {
@@ -49,7 +51,20 @@ public partial class AdminPageViewModel:ObservableObject
 
     }
     
-    
-    
-    
+    [RelayCommand]
+    public void UserFrozenClick()
+    {
+        Core.db.SaveChangesAsync();
+    }
+    [RelayCommand]
+    public void BookFrozenClick()
+    {
+        
+    }
+    [RelayCommand]
+    public void ReviewFrozenClick()
+    {
+        
+    }
+
 }
