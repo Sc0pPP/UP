@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace UP.Models;
 
 public partial class Report
 {
     public int ReportId { get; set; }
-
+    [JsonIgnore]
     public int UserId { get; set; }
-
+    [JsonIgnore]
     public int? BookId { get; set; }
-
+    [JsonIgnore]
     public int? ReviewId { get; set; }
 
     public string Cause { get; set; } = null!;

@@ -5,7 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UP.Views.CurrentBookPage"
              Name="Page">
-   <Grid>
+   <Grid Background="#FDF8F5">
          <Grid.RowDefinitions>
             <RowDefinition Height="250"/>
             <RowDefinition Height="*"/>
@@ -13,7 +13,8 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" BorderThickness="1" BorderBrush="#E0C8BC" Background="White"
-                Margin="10,10,10,5" CornerRadius="10" >
+                Margin="10,10,10,5" CornerRadius="12" Padding="16"
+                BoxShadow="0 12 30 0 #10000000">
             <StackPanel Orientation="Horizontal"  >
             <StackPanel Width="300" HorizontalAlignment="Left" >
             <TextBlock Text="{Binding Name}" FontSize="14" HorizontalAlignment="Center"
@@ -45,7 +46,7 @@
                         <DataTemplate>
                             <Border Background="#FDF8F5" CornerRadius="8"
                                     BorderBrush="#E0C8BC" BorderThickness="1"
-                                    Padding="14,10" Margin="0,0,0,10">
+                                    Padding="14,10" Margin="0,0,0,10" BoxShadow="0 4 14 0 #0A000000">
                                 <StackPanel Spacing="4">
                                     <TextBlock Text="{Binding ReviewText}"
                                                FontSize="12" Foreground="#7A6A6A"
@@ -96,8 +97,8 @@
                 <StackPanel Margin="10,0,0,0">
                     <TextBlock Text="Написать отзыв" FontSize="13" FontWeight="SemiBold"
                                Foreground="#C8966E" Margin="0,0,0,14"/>
-                    <TextBox Text="{Binding ReviewTextBox}" Width="100"  Height="100" CornerRadius="6"
-                             BorderBrush="#E0C8BC" Padding="10,0" Margin="0,0,0,14"/>
+                    <TextBox Text="{Binding ReviewTextBox}" Width="180"  Height="100" CornerRadius="8"
+                             BorderBrush="#E0C8BC" Padding="10,6" Margin="0,0,0,14"/>
                     <Slider Minimum="1" Maximum="10" Value="{Binding Rating}" 
                             Width="200" TickFrequency="1" IsSnapToTickEnabled="True"/>
                     <TextBlock Text="{Binding Rating}" Margin="10,0,0,0" FontSize="14"/>
@@ -112,7 +113,8 @@
         </Border>
 
         <Border Grid.Row="1" Background="White" BorderBrush="#E0C8BC" BorderThickness="1"
-                Margin="10,5,10,5" CornerRadius="10" Padding="16">
+                Margin="10,5,10,10" CornerRadius="12" Padding="18"
+                BoxShadow="0 12 30 0 #10000000">
             <ScrollViewer VerticalScrollBarVisibility="Auto"
                           HorizontalScrollBarVisibility="Disabled">
                 <TextBlock Text="{Binding LongText}"

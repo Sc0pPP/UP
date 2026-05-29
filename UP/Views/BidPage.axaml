@@ -5,10 +5,11 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UP.Views.BidPage">
 <Grid Background="#FDF8F5">
-    <Border HorizontalAlignment="Stretch"
+    <Border HorizontalAlignment="Center" MaxWidth="620"
             BorderThickness="1" BorderBrush="#E0C8BC"
-            Background="White" Margin="20" CornerRadius="12">
-        <StackPanel Margin="32" Spacing="16" VerticalAlignment="Top" MaxWidth="500">
+            Background="White" Margin="20" CornerRadius="12"
+            BoxShadow="0 14 36 0 #14000000">
+        <StackPanel Margin="34" Spacing="16" VerticalAlignment="Top" Width="520">
 
             <TextBlock Text="Подать заявку" FontSize="18" FontWeight="SemiBold"
                        Foreground="#3D2C2C"/>
@@ -38,12 +39,12 @@
             <StackPanel Spacing="6">
                 <TextBlock Text="Причина" FontSize="12" Foreground="#B0A0A0"/>
                 <TextBox Text="{Binding Cause}"
-                         Watermark="Опишите причину жалобы..."
+                         PlaceholderText="Опишите причину жалобы..."
                          AcceptsReturn="True" Height="120"
                          TextWrapping="Wrap"
                          Background="#FDF8F5" BorderBrush="#E0C8BC"
                          CornerRadius="8" Padding="12,8"
-                         VerticalContentAlignment="Top"/>
+                         VerticalContentAlignment="Center"/>
             </StackPanel>
 
             <Border Height="1" Background="#F0E4DC"/>

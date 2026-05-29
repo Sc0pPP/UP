@@ -4,5 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UP.Views.FreezePage">
-    Welcome to Avalonia!
+    <Grid Background="#FDF8F5">
+        <Border Width="420" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Background="White" BorderBrush="#E0C8BC" BorderThickness="1"
+                CornerRadius="12" Padding="34" BoxShadow="0 14 36 0 #14000000">
+            <StackPanel Spacing="14">
+                <TextBlock Text="Аккаунт заморожен"
+                           FontSize="20" FontWeight="SemiBold"
+                           Foreground="#3D2C2C" HorizontalAlignment="Center"/>
+                <Border Height="1" Background="#F0E4DC"/>
+                <TextBlock Text="Доступ к разделам ограничен. Перейдите в профиль, чтобы подать заявку на разморозку."
+                           FontSize="13" Foreground="#7A6A6A"
+                           TextWrapping="Wrap" TextAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
 </ContentPage>

@@ -7,7 +7,8 @@
    <Grid Background="#FDF8F5">
     <Border HorizontalAlignment="Stretch"
             BorderThickness="1" BorderBrush="#E0C8BC"
-            Background="White" Margin="20" CornerRadius="12">
+            Background="White" Margin="20" CornerRadius="12"
+            BoxShadow="0 14 36 0 #14000000">
         <Grid Margin="24" ColumnDefinitions="220,*,260">
 
           

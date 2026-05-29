@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QYDZJwO96BU=",
+  "dgSpecHash": "BgsScPN1h2E=",
   "success": true,
   "projectFilePath": "C:\\Users\\Scop\\RiderProjects\\UP\\UP\\UP.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "C:\\Users\\Scop\\.nuget\\packages\\avaloniaui.diagnosticssupport\\2.2.0\\avaloniaui.diagnosticssupport.2.2.0.nupkg.sha512",
     "C:\\Users\\Scop\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Scop\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
+    "C:\\Users\\Scop\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Scop\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.1\\communitytoolkit.mvvm.8.4.1.nupkg.sha512",
     "C:\\Users\\Scop\\.nuget\\packages\\excss\\4.3.0\\excss.4.3.0.nupkg.sha512",
     "C:\\Users\\Scop\\.nuget\\packages\\harfbuzzsharp\\8.3.1.3\\harfbuzzsharp.8.3.1.3.nupkg.sha512",
@@ -47,6 +48,7 @@
     "C:\\Users\\Scop\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.15\\microsoft.entityframeworkcore.abstractions.9.0.15.nupkg.sha512",
     "C:\\Users\\Scop\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.15\\microsoft.entityframeworkcore.analyzers.9.0.15.nupkg.sha512",
     "C:\\Users\\Scop\\.nuget\\packages\\microsoft.entityframeworkcore.design\\9.0.15\\microsoft.entityframeworkcore.design.9.0.15.nupkg.sha512",
+    "C:\\Users\\Scop\\.nuget\\packages\\microsoft.entityframeworkcore.proxies\\9.0.15\\microsoft.entityframeworkcore.proxies.9.0.15.nupkg.sha512",
     "C:\\Users\\Scop\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\9.0.15\\microsoft.entityframeworkcore.relational.9.0.15.nupkg.sha512",
     "C:\\Users\\Scop\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\9.0.15\\microsoft.entityframeworkcore.sqlserver.9.0.15.nupkg.sha512",
     "C:\\Users\\Scop\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\9.0.15\\microsoft.entityframeworkcore.tools.9.0.15.nupkg.sha512",
@@ -141,10 +143,10 @@
     "C:\\Users\\Scop\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\Scop\\.nuget\\packages\\tmds.dbus.protocol\\0.90.3\\tmds.dbus.protocol.0.90.3.nupkg.sha512",
     "C:\\Users\\Scop\\.nuget\\packages\\wpflikeavaloniamessagebox\\1.0.0\\wpflikeavaloniamessagebox.1.0.0.nupkg.sha512",
-    "C:\\Users\\Scop\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.14\\microsoft.netcore.app.ref.9.0.14.nupkg.sha512",
-    "C:\\Users\\Scop\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.14\\microsoft.windowsdesktop.app.ref.9.0.14.nupkg.sha512",
-    "C:\\Users\\Scop\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.14\\microsoft.aspnetcore.app.ref.9.0.14.nupkg.sha512",
-    "C:\\Users\\Scop\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.14\\microsoft.netcore.app.host.win-x64.9.0.14.nupkg.sha512"
+    "C:\\Users\\Scop\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.16\\microsoft.netcore.app.ref.9.0.16.nupkg.sha512",
+    "C:\\Users\\Scop\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.16\\microsoft.windowsdesktop.app.ref.9.0.16.nupkg.sha512",
+    "C:\\Users\\Scop\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.16\\microsoft.aspnetcore.app.ref.9.0.16.nupkg.sha512",
+    "C:\\Users\\Scop\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.16\\microsoft.netcore.app.host.win-x64.9.0.16.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,3 +1,5 @@
+using Avalonia.Controls;
+
 namespace UP.Services;
 
 public class MessageBoxService
@@ -6,5 +8,4 @@ public class MessageBoxService
     {
         WpfLikeAvaloniaMessageBox.MessageBox.Show(message);
     }
-    
 }

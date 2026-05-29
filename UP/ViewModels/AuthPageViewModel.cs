@@ -1,7 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using UP.Context;
 using UP.Models;
 using UP.Services;
 using UP.Views;
@@ -55,7 +59,7 @@ public partial class AuthPageViewModel:ObservableObject
     }
 
     [RelayCommand]
-    public void MainButtonClick()
+    public async void MainButtonClick()
     {
         
         if (AuthButtonIsEnabled == false)
@@ -66,10 +70,37 @@ public partial class AuthPageViewModel:ObservableObject
                 return;
             }
 
-            var user = Core.db.Users.FirstOrDefault(u => u.Login == UserNameTextBox && u.Password == PasswordTextBox);
-            if (user==null)MessageBoxService.MessageBoxShow("Неверный логин или пароль");
+            var data = new AuthData( UserNameTextBox, PasswordTextBox);
+           
+            
+            using var httpClient = new HttpClient
+            {
+                BaseAddress = new Uri("http://localhost:5000")
+            };
 
-            _appState.CurrentUser = user;
+            var response = await httpClient.PostAsJsonAsync("/api/auth/login",data);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                MessageBoxService.MessageBoxShow(error);
+                return;
+            }
+             
+            var users = await httpClient.GetFromJsonAsync<List<User>>("/api/users");
+
+            foreach (User u in users )
+            {
+                if (u.Login == UserNameTextBox)
+                {
+                    _appState.CurrentUser = u;
+                }
+            }
+            
+            MessageBoxService.MessageBoxShow("Вы Вошли!");
+            _navigationService.ReplaceToAsync<FirstPageViewModel>();
+            
+            // var user = Core.db.Users.FirstOrDefault(u => u.Login == UserNameTextBox && u.Password == PasswordTextBox);
             _navigationService.ReplaceToAsync<FirstPageViewModel>();
         }
     }

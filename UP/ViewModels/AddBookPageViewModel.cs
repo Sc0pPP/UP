@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using UP.Models;
+using UP.Models.Requests;
 using UP.Services;
 
 namespace UP.ViewModels;
@@ -42,9 +46,9 @@ public partial class AddBookPageViewModel:ObservableObject
     }
 
     [RelayCommand]
-    public void AddClick()
+    public async void AddClick()
     {
-        Book bk=new Book()
+        AddBook bk=new AddBook()
         {
             Name = Name,
             Description = Description,
@@ -52,23 +56,23 @@ public partial class AddBookPageViewModel:ObservableObject
             IsFrozen = true,
             CoverPath = "/covers/old_mansion.jpg",
             Content = Context,
-            Genre = 0,
-            Review = 0
+            Review = 0,
+            GenreIds = AddGenres.Select(g => g.GenreId).ToList()
+            
+        };
+        using var httpClient = new HttpClient
+        {
+            BaseAddress = new Uri("http://localhost:5000")
         };
         
-        Core.db.Books.Add(bk);
-        Core.db.SaveChanges();
-        int CurrentBookId = Core.db.Books.FirstOrDefault(b => b.Name == Name).BookId;
-        foreach (Genre g in  AddGenres )
+        
+        var response = await httpClient.PostAsJsonAsync("/api/books/add", bk);
+
+        if (!response.IsSuccessStatusCode)
         {
-            BookGenre bg = new BookGenre()
-            {
-                GenreId = g.GenreId,
-                BookId = CurrentBookId
-            };
-            Core.db.BookGenres.Add(bg);
-            Core.db.SaveChanges();
-            
+            var error = await response.Content.ReadAsStringAsync();
+            MessageBoxService.MessageBoxShow(error);
+            return;
         }
         
         MessageBoxService.MessageBoxShow("Книга наверн добавлена");

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace UP.Models;
 
 public partial class RoleBid
 {
     public int RoleBidId { get; set; }
-
+    [JsonIgnore]
     public int UserId { get; set; }
 
     public string Bid { get; set; } = null!;

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UP.Views.EditBookAuthorPage">
-    <Grid>
+    <Grid Background="#FDF8F5">
          <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
             <RowDefinition Height="*"/>
@@ -12,14 +12,15 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" BorderThickness="1" BorderBrush="#E0C8BC" Background="White"
-                Margin="10,10,10,5" CornerRadius="10" >
+                Margin="10,10,10,5" CornerRadius="12" Padding="16"
+                BoxShadow="0 12 30 0 #10000000">
             <StackPanel Orientation="Horizontal"  >
             <StackPanel Width="300" HorizontalAlignment="Left" >
-            <TextBox Text="{Binding CurrentBook.Name}" FontSize="14" HorizontalAlignment="Center"
+            <TextBox Text="{Binding CurrentBook.Name}" Width="220" FontSize="14" HorizontalAlignment="Center"
                        Foreground="#C8966E" LetterSpacing="3" Margin="0,0,0,6"/>
-            <TextBox Text="{Binding CurrentBook.AuthorNavigation.fio}" FontSize="14" HorizontalAlignment="Center"
+            <TextBox Text="{Binding CurrentBook.AuthorNavigation.fio}" Width="220" FontSize="14" HorizontalAlignment="Center"
                        Foreground="#C8966E" LetterSpacing="3" Margin="0,0,0,6"/>
-            <TextBox Text="{Binding CurrentBook.Description}" FontSize="13" TextWrapping="Wrap" HorizontalAlignment="Center"
+            <TextBox Text="{Binding CurrentBook.Description}" Width="220" Height="58" FontSize="13" TextWrapping="Wrap" HorizontalAlignment="Center"
                        Foreground="#C8966E"  Margin="0,0,0,6"/>
            
                 
@@ -64,7 +65,8 @@
         </Border>
 
         <Border Grid.Row="1" Background="White" BorderBrush="#E0C8BC" BorderThickness="1"
-                Margin="10,5,10,5" CornerRadius="10" Padding="16">
+                Margin="10,5,10,10" CornerRadius="12" Padding="18"
+                BoxShadow="0 12 30 0 #10000000">
             <ScrollViewer VerticalScrollBarVisibility="Auto"
                           HorizontalScrollBarVisibility="Disabled">
                 <TextBox Text="{Binding CurrentBook.Content}"

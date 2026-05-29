@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace UP.Models;
 
@@ -27,17 +28,17 @@ public partial class User
     public string Email { get; set; } = null!;
 
     public string? FrozenReasons { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<Book> Books { get; set; } = new List<Book>();
-
+    [JsonIgnore]
     public virtual ICollection<FrozenBid> FrozenBids { get; set; } = new List<FrozenBid>();
-
+    [JsonIgnore]
     public virtual ICollection<ReadingList> ReadingLists { get; set; } = new List<ReadingList>();
-
+    [JsonIgnore]
     public virtual ICollection<Report> Reports { get; set; } = new List<Report>();
-
+    [JsonIgnore]
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
-
+    [JsonIgnore]
     public virtual ICollection<RoleBid> RoleBids { get; set; } = new List<RoleBid>();
 
     public virtual Role RoleNavigation { get; set; } = null!;

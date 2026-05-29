@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -58,67 +60,117 @@ public partial class BidPageViewModel : ObservableObject
     {
         if (string.IsNullOrWhiteSpace(Cause)) return;
         Console.WriteLine($"DEBUG: type={SelectedReportType}, user={_appState.CurrentUser?.UserId}, book={_appState.CurrentBook?.BookId}");
+        // switch (SelectedReportType)
+        // {
+        //     case BidTypes.BookReport:
+        //         await Core.db.Reports.AddAsync(new Report
+        //         {
+        //             UserId = _appState.CurrentUser!.UserId,
+        //             BookId = _appState.CurrentBook!.BookId,
+        //             Cause = Cause,
+        //             IsChecked = false
+        //         });
+        //         break;
+        //
+        //     case BidTypes.ReviewReport:
+        //         await Core.db.Reports.AddAsync(new Report
+        //         {
+        //             UserId = _appState.CurrentUser!.UserId,
+        //             ReviewId = _appState.CurrentReview!.ReviewId,
+        //             Cause = Cause,
+        //             IsChecked = false
+        //         });
+        //         break;
+        //
+        //     case BidTypes.AuthorReport:
+        //         await Core.db.Reports.AddAsync(new Report
+        //         {
+        //             UserId = _appState.CurrentUser!.UserId,
+        //             ReportedUserId = _appState.CurrentBook!.Author,
+        //             Cause = Cause,
+        //             IsChecked = false
+        //         });
+        //         break;
+        //
+        //     case BidTypes.FreezeBookReport:
+        //         await Core.db.FrozenBids.AddAsync(new FrozenBid
+        //         {
+        //             UserId = _appState.CurrentUser.UserId,
+        //             BookId = _appState.CurrentBook.BookId,
+        //             Bid = Cause
+        //         });
+        //         break;
+        //
+        //     case BidTypes.FreezeAuthorReport:
+        //                 await Core.db.FrozenBids.AddAsync(new FrozenBid
+        //                 {
+        //                     UserId = _appState.CurrentUser!.UserId,
+        //                     ReportedUserId = _appState.CurrentBook!.Author,
+        //                     Bid = Cause
+        //                 });
+        //                 break;
+        //     
+        //     case BidTypes.FreezeUserReport:
+        //                 await Core.db.FrozenBids.AddAsync(new FrozenBid
+        //                 {
+        //                     UserId = _appState.CurrentUser!.UserId,
+        //                     //ReportedUserId = _appState.CurrentReview!.UserId,
+        //                     Bid = Cause
+        //                 });
+        //                 break;
+        //         }
+        //     
+        BidRequest bq = new BidRequest()
+        {
+            Type = SelectedReportType,
+            UserId = _appState.CurrentUser.UserId,
+            Cause = Cause,
+        };
+
         switch (SelectedReportType)
         {
             case BidTypes.BookReport:
-                await Core.db.Reports.AddAsync(new Report
-                {
-                    UserId = _appState.CurrentUser!.UserId,
-                    BookId = _appState.CurrentBook!.BookId,
-                    Cause = Cause,
-                    IsChecked = false
-                });
-                break;
+                bq.BookId=_appState.CurrentBook.BookId;
+            break;
+        
+        case BidTypes.ReviewReport:
+                bq.ReviewId=_appState.CurrentReview.ReviewId;
+            break;
+        
+        case BidTypes.AuthorReport:
+           bq.ReportedUserId=_appState.CurrentBook.Author;
+            break;
+        
+        case BidTypes.FreezeBookReport:
+           bq.BookId=_appState.CurrentBook.BookId;
+            break;
+        
+        case BidTypes.FreezeAuthorReport:
+                    bq.UserId=_appState.CurrentUser.UserId;
+                    bq.ReportedUserId=_appState.CurrentBook.Author;
+                    break;
+        
+        case BidTypes.FreezeUserReport:
+                   bq.UserId=_appState.CurrentUser.UserId;
+                    break;
+        case BidTypes.AuthorBid:
+            bq.UserId=_appState.CurrentUser.UserId;
+            break;
+            }
+        using var httpClient = new HttpClient
+        {
+            BaseAddress = new Uri("http://localhost:5000")
+        };
+        
+        
+        var response = await httpClient.PostAsJsonAsync("/api/reports",bq);
 
-            case BidTypes.ReviewReport:
-                await Core.db.Reports.AddAsync(new Report
-                {
-                    UserId = _appState.CurrentUser!.UserId,
-                    ReviewId = _appState.CurrentReview!.ReviewId,
-                    Cause = Cause,
-                    IsChecked = false
-                });
-                break;
-
-            case BidTypes.AuthorReport:
-                await Core.db.Reports.AddAsync(new Report
-                {
-                    UserId = _appState.CurrentUser!.UserId,
-                    ReportedUserId = _appState.CurrentBook!.Author,
-                    Cause = Cause,
-                    IsChecked = false
-                });
-                break;
-
-            case BidTypes.FreezeBookReport:
-                await Core.db.FrozenBids.AddAsync(new FrozenBid
-                {
-                    UserId = _appState.CurrentUser.UserId,
-                    BookId = _appState.CurrentBook.BookId,
-                    Bid = Cause
-                });
-                break;
-
-            case BidTypes.FreezeAuthorReport:
-                        await Core.db.FrozenBids.AddAsync(new FrozenBid
-                        {
-                            UserId = _appState.CurrentUser!.UserId,
-                            ReportedUserId = _appState.CurrentBook!.Author,
-                            Bid = Cause
-                        });
-                        break;
-            
-            case BidTypes.FreezeUserReport:
-                        await Core.db.FrozenBids.AddAsync(new FrozenBid
-                        {
-                            UserId = _appState.CurrentUser!.UserId,
-                            //ReportedUserId = _appState.CurrentReview!.UserId,
-                            Bid = Cause
-                        });
-                        break;
-                }
-            
-                await Core.db.SaveChangesAsync();
+        if (!response.IsSuccessStatusCode)
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            MessageBoxService.MessageBoxShow(error);
+            return;
+        }
                 _navigationService.ReplaceToAsync<ProfilePageViewModel>();
             }
             

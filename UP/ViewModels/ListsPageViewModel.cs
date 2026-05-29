@@ -2,10 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.EntityFrameworkCore;
 using UP.Models;
+using UP.Models.Requests;
 using UP.Services;
 
 namespace UP.ViewModels;
@@ -16,7 +19,7 @@ public partial class ListsPageViewModel : ObservableObject
     private readonly AppState _appState;
 
     [ObservableProperty] 
-    private ObservableCollection<ReadingList> _booksIS = new();
+    private ObservableCollection<ReadingListResponse> _booksIS = new();
     [ObservableProperty] 
     private int _selectedListType = 2;
     [ObservableProperty] 
@@ -46,15 +49,17 @@ public partial class ListsPageViewModel : ObservableObject
         _appState = appState;
         filtered();
     }
-    private void filtered()
+    private async void  filtered()
     {
-        var filteredAll = Core.db.ReadingLists
-            .Include(r => r.Book)
-            .ThenInclude(b => b.BookGenres)
-            .ThenInclude(bg => bg.Genre)
-            .Include(r => r.Book.AuthorNavigation)
-            .Where(r => r.UserId == _appState.CurrentUser.UserId && r.ReadingListType == _selectedListType)
-            .ToList();
+        using var httpClient = new HttpClient
+        {
+            BaseAddress = new Uri("http://localhost:5000")
+        };
+        
+       
+        var readingList = await httpClient.GetFromJsonAsync<List<ReadingListResponse>>(
+            $"/api/readinglists?userId={_appState.CurrentUser.UserId}&type={_selectedListType}");
+        var filteredAll = readingList ?? new List<ReadingListResponse>();
         if (!string.IsNullOrWhiteSpace(_searchName))
         {
             filteredAll = filteredAll.Where(b =>
@@ -71,7 +76,7 @@ public partial class ListsPageViewModel : ObservableObject
 
         if (!string.IsNullOrWhiteSpace(_selectedGenre))
         {
-            filteredAll= filteredAll.Where(b => b.Book.BookGenres.Count(bg => bg.Genre.Genre1 == _selectedGenre) > 0).ToList();
+            filteredAll = filteredAll.Where(b => b.Genres.Contains(_selectedGenre)).ToList();
         }
         
         if (SelectedAuthorCombo != "По умолчанию")
@@ -98,7 +103,7 @@ public partial class ListsPageViewModel : ObservableObject
                 filteredAll = filteredAll.OrderByDescending(b => b.Book.Review).ToList();
             }
         } 
-        BooksIS=new ObservableCollection<ReadingList>(filteredAll);
+        BooksIS=new ObservableCollection<ReadingListResponse>(filteredAll);
         
     }
 
@@ -151,16 +156,21 @@ public partial class ListsPageViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void ClickBook(ReadingList item)
+    private void ClickBook(ReadingListResponse item)
     {
         _appState.CurrentBook = item.Book;
         _navigationService.ReplaceToAsync<CurrentBookPageViewModel>();
     }
 
     [RelayCommand]
-    private void MoveToList(ReadingList item)
+    private async void MoveToList(ReadingListResponse item)
     {
-        item.ReadingListType = item.ReadingListType switch
+        EditRL editrl = new EditRL()
+        {
+            ReadingListId = item.Rlid,
+            ReadingListType = item.ReadingListType,
+        };
+        editrl.ReadingListType = editrl.ReadingListType switch
         {
             1 => 2,
             2 => 3,
@@ -168,16 +178,41 @@ public partial class ListsPageViewModel : ObservableObject
             4 => 1,
             _ => 2
         };
-        Core.db.SaveChanges();
+        using var httpClient = new HttpClient
+        {
+            BaseAddress = new Uri("http://localhost:5000")
+        };
+        
+        
+        var response = await httpClient.PatchAsJsonAsync("/api/readinglists/edit", editrl);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            MessageBoxService.MessageBoxShow(error);
+            return;
+        }
        filtered();
     }
     
 
     [RelayCommand]
-    private void RemoveFromList(ReadingList item)
+    private async void RemoveFromList(ReadingListResponse item)
     {
-        Core.db.ReadingLists.Remove(item);
-        Core.db.SaveChanges();
+        using var httpClient = new HttpClient
+        {
+            BaseAddress = new Uri("http://localhost:5000")
+        };
+
+        var response = await httpClient.DeleteAsync($"/api/readinglists/{item.Rlid}");
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            MessageBoxService.MessageBoxShow(error);
+            return;
+        }
+
         filtered();
     }
 }

@@ -2,10 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.EntityFrameworkCore;
 using UP.Models;
+using UP.Models.Requests;
 using UP.Services;
 
 namespace UP.ViewModels;
@@ -146,16 +149,35 @@ public partial class FirstPageViewModel : ObservableObject
         _navigationService.ReplaceToAsync<CurrentBookPageViewModel>();
     }
     [RelayCommand]
-    private void AddCLickBook(Book book)
+    private async void AddCLickBook(Book book)
     {
-        ReadingList rl = new ReadingList()
+        
+        
+        
+        
+        
+        
+        AddRL rl = new AddRL()
         {
             UserId = _appState.CurrentUser.UserId,
-            Book = book,
+            BookId = book.BookId,
             ReadingListType = 2
         };
-        Core.db.ReadingLists.Add(rl);
-        Core.db.SaveChanges();
+        using var httpClient = new HttpClient
+        {
+            BaseAddress = new Uri("http://localhost:5000")
+        };
+        
+        
+        var response = await httpClient.PostAsJsonAsync("/api/readinglists/add", rl);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            MessageBoxService.MessageBoxShow(error);
+            return;
+        }
+        
         MessageBoxService.MessageBoxShow("Книга добавлена в список");
     }
     

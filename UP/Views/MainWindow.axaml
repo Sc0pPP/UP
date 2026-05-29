@@ -8,9 +8,9 @@
         x:Class="UP.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="UP">
-    <DrawerPage DrawerLength="200">
+    <DrawerPage DrawerLength="200" Background="#FDF8F5">
         <DrawerPage.DrawerHeader>
-            <Border Background="#C8966E" Padding="20,24,20,16">
+            <Border Background="#C8966E" Padding="18,24,18,18">
                 <StackPanel Spacing="4" >
                     <TextBlock Text="Shut I Korol"
                                Foreground="White"
@@ -25,10 +25,10 @@
             </Border>
         </DrawerPage.DrawerHeader>
         <DrawerPage.Drawer >
-            <StackPanel Spacing="8" Margin="12" Width="200" >
+            <StackPanel Spacing="10" Margin="14" Width="68" HorizontalAlignment="Center">
 
-                <Button Background="Transparent" BorderThickness="0"
-                        Padding="8" CornerRadius="8"
+                <Button Background="#FDF8F5" BorderThickness="0"
+                        Padding="10" CornerRadius="10" Width="48" Height="48"
                         HorizontalAlignment="Center"
                         ToolTip.Tip="Каталог книг"
                         Command="{Binding GoToCatalogCommand}">
@@ -36,8 +36,8 @@
                            VerticalAlignment="Center"/>
                 </Button>
 
-                <Button Background="Transparent" BorderThickness="0"
-                        Padding="8" CornerRadius="8"
+                <Button Background="#FDF8F5" BorderThickness="0"
+                        Padding="10" CornerRadius="10" Width="48" Height="48"
                         ToolTip.Tip="Списки книг"
                         HorizontalAlignment="Center"
                         Command="{Binding GoToListsCommand}">
@@ -45,8 +45,8 @@
                            VerticalAlignment="Center"/>
                 </Button>
 
-                <Button Background="Transparent" BorderThickness="0"
-                        Padding="8" CornerRadius="8"
+                <Button Background="#FDF8F5" BorderThickness="0"
+                        Padding="10" CornerRadius="10" Width="48" Height="48"
                         ToolTip.Tip="Профиль"
                         HorizontalAlignment="Center"
                         Command="{Binding GoToProfileCommand}">
@@ -55,8 +55,8 @@
                            VerticalAlignment="Center"/>
                 </Button>
 
-                <Button Background="Transparent" BorderThickness="0"
-                        Padding="8" CornerRadius="8"
+                <Button Background="#FDF8F5" BorderThickness="0"
+                        Padding="10" CornerRadius="10" Width="48" Height="48"
                         ToolTip.Tip="Страница автора"
                         HorizontalAlignment="Center"
                         IsVisible="{Binding IsAuthor}"
@@ -65,8 +65,8 @@
                            VerticalAlignment="Center"/>
                 </Button>
 
-                <Button Background="Transparent" BorderThickness="0"
-                        Padding="8" CornerRadius="8"
+                <Button Background="#FDF8F5" BorderThickness="0"
+                        Padding="10" CornerRadius="10" Width="48" Height="48"
                         ToolTip.Tip="Администрирование"
                         HorizontalAlignment="Center"
                         IsVisible="{Binding IsAdmin}"
@@ -75,8 +75,8 @@
                            VerticalAlignment="Center"/>
                 </Button>
 
-                <Button Background="Transparent" BorderThickness="0"
-                        Padding="8" CornerRadius="8"
+                <Button Background="#FDF8F5" BorderThickness="0"
+                        Padding="10" CornerRadius="10" Width="48" Height="48"
                         ToolTip.Tip="Аккаунт заморожен"
                         HorizontalAlignment="Center"
                         IsVisible="{Binding IsFrozen}"
@@ -90,7 +90,7 @@
         <DrawerPage.Content>
             <NavigationPage x:Name="NavPage" >
                 <NavigationPage.TopCommandBar>
-                    <CommandBar Background="#FDF8F5">
+                    <CommandBar Background="#C8966E" Height="44">
                         
                     </CommandBar>
                 </NavigationPage.TopCommandBar>
